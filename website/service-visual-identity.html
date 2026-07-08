@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Identity Design — Zareya</title>
+  <meta name="description" content="Logo system, colour palette, typography, brand guidelines — strategy-led visual identity for African businesses. From KES 85,000.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/vars.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .del-icon{width:36px;height:36px;background:var(--rose-10);border:1px solid var(--rose-18);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--rose);flex-shrink:0;margin-top:2px;}
+    .deliverable-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+    .deliverable-item:last-child{border-bottom:none;}
+    .del-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:4px;}
+    .del-desc{font-size:13px;font-weight:300;color:var(--text-2);line-height:1.7;}
+    .format-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--bg-2);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-2);border-radius:2px;}
+    .faq-item{border-bottom:1px solid var(--border);}
+    .faq-item:first-child{border-top:1px solid var(--border);}
+    .faq-q{padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:500;color:var(--text);gap:16px;}
+    .faq-a{font-size:14px;font-weight:300;color:var(--text-2);line-height:1.8;padding-bottom:20px;display:none;}
+    .faq-a.open{display:block;}
+    .faq-chevron{flex-shrink:0;transition:transform 0.2s;color:var(--rose);}
+    .faq-chevron.open{transform:rotate(180deg);}
+    .price-box{background:var(--bg-2);border:1px solid var(--border-2);border-top:3px solid var(--rose);padding:36px;border-radius:2px;}
+    .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+    .tier-col{background:var(--bg-2);padding:28px;}
+    .tier-col.featured{background:var(--bg);border-top:2px solid var(--rose);}
+    @media(max-width:768px){.tier-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">zareya<span>.</span></a>
+  <div class="nav-links">
+    <a href="process.html" class="nav-link">The Process</a>
+    <a href="services.html" class="nav-link active">Services</a>
+    <a href="work.html" class="nav-link">Work</a>
+    <a href="insights.html" class="nav-link">Insights</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-cta">Start a project</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="process.html" class="nav-link">The Process</a>
+  <a href="services.html" class="nav-link">Services</a>
+  <a href="work.html" class="nav-link">Work</a>
+  <a href="insights.html" class="nav-link">Insights</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-cta">Start a project</a>
+</div>
+
+<div class="page-top">
+  <section style="padding:80px 0 64px;background:linear-gradient(to bottom,var(--bg-2),var(--bg));border-bottom:1px solid var(--border);">
+    <div class="container">
+      <a href="services.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-3);margin-bottom:24px;text-decoration:none;transition:color 0.15s;" class="reveal" onmouseover="this.style.color='var(--rose)'" onmouseout="this.style.color='var(--text-3)'">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>All Services</a>
+      <div class="grid-2" style="gap:60px;align-items:end;">
+        <div>
+          <div class="eyebrow mb-16 reveal">Service 02</div>
+          <h1 class="d-xl mb-24 reveal reveal-delay-1">Visual Identity<br><em class="em">Design</em></h1>
+          <p class="body-l reveal reveal-delay-2" style="max-width:480px;">Strategy made visible. A logo system, colour palette, typography, and brand guidelines built on what your brand actually stands for — not what looks trendy this year.</p>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="price-box">
+            <div class="eyebrow mb-12">Starting from</div>
+            <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--rose);line-height:1;margin-bottom:6px;">KES 85K</div>
+            <div style="font-size:13px;color:var(--text-3);margin-bottom:24px;">2–3 weeks · 50% deposit to begin</div>
+            <a href="contact.html" class="btn-primary" style="width:100%;justify-content:center;">Start this engagement ↗</a>
+            <div style="font-size:12px;color:var(--text-3);text-align:center;margin-top:12px;">Or <a href="contact.html" style="color:var(--rose);">book a free discovery call</a> first</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- WHAT'S WRONG WITH MOST LOGOS -->
+<section class="section">
+  <div class="container">
+    <div class="grid-2" style="gap:80px;align-items:center;">
+      <div class="reveal">
+        <div class="eyebrow mb-16">The problem with most brand design</div>
+        <h2 class="d-lg mb-24">A logo is not<br><em class="em">a brand.</em></h2>
+        <p class="body-l mb-16">Most businesses get a logo. Some get a colour palette. Few get a complete visual identity system — and almost none get one that was built on a strategic foundation.</p>
+        <p class="body">The result is a visual presence that looks inconsistent across channels, dates quickly because it follows trends rather than truth, and fails to communicate anything specific about the business behind it.</p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div style="background:var(--bg-2);border:1px solid var(--border);padding:32px;border-radius:2px;">
+          <div style="font-family:var(--serif);font-size:20px;font-style:italic;color:var(--text);margin-bottom:14px;line-height:1.5;">"Identity built without strategy is decoration. Identity built on strategy is architecture."</div>
+          <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-3);">— Zareya, The Illumination Process</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DELIVERABLES -->
+<section class="section">
+  <div class="container">
+    <div class="reveal mb-40">
+      <div class="eyebrow mb-16">Every deliverable</div>
+      <h2 class="d-md mb-8">What you receive —<br><em class="em">in full.</em></h2>
+      <p class="body" style="max-width:500px;">Nothing is withheld for a "premium tier." Every visual identity engagement includes the complete system. What changes between tiers is the complexity, not the quality.</p>
+    </div>
+    <div class="grid-2" style="gap:40px;">
+      <div class="reveal">
+        <div class="deliverable-item">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></div>
+          <div>
+            <div class="del-title">Logo System</div>
+            <div class="del-desc">Primary logo, secondary logo, and icon/monogram versions. Each one justified against the brand strategy — not aesthetic preference. Delivered in every format you'll ever need.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;">
+              <span class="format-pill">AI</span><span class="format-pill">EPS</span><span class="format-pill">SVG</span><span class="format-pill">PNG</span><span class="format-pill">JPG</span><span class="format-pill">PDF</span>
+            </div>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+          <div>
+            <div class="del-title">Colour Palette</div>
+            <div class="del-desc">Primary, secondary, and accent colours — each with HEX, RGB, CMYK, and Pantone values. Usage rules that tell your printer, your designer, and your social media manager exactly when and how to use each colour.</div>
+          </div>
+        </div>
+        <div class="deliverable-item" style="border-bottom:none;">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div>
+          <div>
+            <div class="del-title">Typography System</div>
+            <div class="del-desc">Primary and secondary typefaces with sizing hierarchy, weight specifications, and usage rules. Includes guidance on free alternatives so your team isn't blocked by font licensing costs.</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="deliverable-item">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="3" height="9"/><rect x="14" y="7" width="3" height="5"/></svg></div>
+          <div>
+            <div class="del-title">Social Media Templates</div>
+            <div class="del-desc">6 core formats — post, story, cover image — editable in Canva. Your team can create on-brand content without a designer. Every template is locked to the brand system.</div>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+          <div>
+            <div class="del-title">Photography Direction Guide</div>
+            <div class="del-desc">The visual world your brand inhabits. What kinds of images to use and avoid. How to art-direct a photo shoot. What stock photography fits the brand. Your content will look cohesive whether you're using professional photography or phone shots.</div>
+          </div>
+        </div>
+        <div class="deliverable-item" style="border-bottom:none;">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div>
+            <div class="del-title">Brand Guidelines Document</div>
+            <div class="del-desc">The complete reference — 20–35 pages covering every element with correct and incorrect usage examples, real-world application mockups, and a handover session walkthrough. Anyone can apply this brand correctly after reading it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TIERS -->
+<section class="section">
+  <div class="container">
+    <div class="reveal mb-40">
+      <div class="eyebrow mb-16">Choose your scope</div>
+      <h2 class="d-md">Three tiers.<br><em class="em">Same standard.</em></h2>
+    </div>
+    <div class="tier-grid reveal reveal-delay-1">
+      <div class="tier-col">
+        <div class="eyebrow mb-16">Starter Identity</div>
+        <div style="font-family:var(--serif);font-size:38px;color:var(--rose);line-height:1;margin-bottom:6px;">KES 85K</div>
+        <div style="font-size:12px;color:var(--text-3);margin-bottom:20px;">2–3 weeks</div>
+        <div style="font-size:13px;color:var(--text-2);margin-bottom:16px;">Best for new businesses, early-stage startups, and simple identity needs.</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
+          <div class="package-check-item" style="font-size:13px;">Logo system (3 versions)</div>
+          <div class="package-check-item" style="font-size:13px;">Colour palette</div>
+          <div class="package-check-item" style="font-size:13px;">Typography system</div>
+          <div class="package-check-item" style="font-size:13px;">4 social media templates</div>
+          <div class="package-check-item" style="font-size:13px;">Brand guidelines (15 pages)</div>
+        </div>
+        <a href="contact.html" class="btn-ghost" style="width:100%;justify-content:center;">Enquire →</a>
+      </div>
+      <div class="tier-col featured">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--rose);margin-bottom:12px;">Most popular</div>
+        <div class="eyebrow mb-16">Full Illumination</div>
+        <div style="font-family:var(--serif);font-size:38px;color:var(--rose);line-height:1;margin-bottom:6px;">KES 150K</div>
+        <div style="font-size:12px;color:var(--text-3);margin-bottom:20px;">3–4 weeks</div>
+        <div style="font-size:13px;color:var(--text-2);margin-bottom:16px;">For established SMEs, rebrands, and funded startups. The complete system.</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
+          <div class="package-check-item" style="font-size:13px;">Everything in Starter</div>
+          <div class="package-check-item" style="font-size:13px;">Brand strategy included</div>
+          <div class="package-check-item" style="font-size:13px;">6 social media templates</div>
+          <div class="package-check-item" style="font-size:13px;">Photography direction guide</div>
+          <div class="package-check-item" style="font-size:13px;">Brand guidelines (25 pages)</div>
+          <div class="package-check-item" style="font-size:13px;">30-day post-launch support</div>
+        </div>
+        <a href="contact.html" class="btn-primary" style="width:100%;justify-content:center;">Start this ↗</a>
+      </div>
+      <div class="tier-col">
+        <div class="eyebrow mb-16">Premium Illumination</div>
+        <div style="font-family:var(--serif);font-size:38px;color:var(--rose);line-height:1;margin-bottom:6px;">KES 220K</div>
+        <div style="font-size:12px;color:var(--text-3);margin-bottom:20px;">5–6 weeks</div>
+        <div style="font-size:13px;color:var(--text-2);margin-bottom:16px;">Complex systems, larger businesses, and multiple sub-brands.</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
+          <div class="package-check-item" style="font-size:13px;">Everything in Full Illumination</div>
+          <div class="package-check-item" style="font-size:13px;">Sub-brand architecture</div>
+          <div class="package-check-item" style="font-size:13px;">10 social media templates</div>
+          <div class="package-check-item" style="font-size:13px;">Stationery design</div>
+          <div class="package-check-item" style="font-size:13px;">Brand guidelines (35 pages)</div>
+          <div class="package-check-item" style="font-size:13px;">60-day post-launch support</div>
+        </div>
+        <a href="contact.html" class="btn-ghost" style="width:100%;justify-content:center;">Enquire →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="eyebrow mb-16 reveal">Common questions</div>
+    <h2 class="d-md mb-48 reveal reveal-delay-1">Before you decide</h2>
+    <div class="reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I get just a logo — without the full system?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-a">We don't offer standalone logo design without the surrounding system. A logo in isolation isn't a brand — it's a symbol without context. The colour palette, typography, and usage guidelines are what make a logo function consistently across your website, social media, print, and signage. Without the system, you'll be back asking a designer for help every time you need to produce new materials.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How many logo concepts will I see?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-a">We present 2–3 clearly differentiated directions, each grounded in the brand strategy rationale. We make a recommendation and explain why. Then you select a direction and we develop it fully. We don't show you ten versions and ask you to pick — that approach produces average results because it's driven by preference, not strategy.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What file formats will I receive?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-a">AI, EPS, SVG, PNG (transparent background), JPG, and PDF. Delivered in both full-colour and white/black versions. Organised in a clearly labelled Google Drive folder so you can find what you need in seconds rather than hunting through files.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if I need changes after delivery?<svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-a">The 30-day support period covers minor refinements and questions. Because the identity is built on agreed strategy, major revisions are rare — the direction is confirmed before any design begins. Significant changes outside the agreed scope are quoted separately.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow mb-16">Ready to look the part?</div>
+      <h2 class="d-lg mb-24">Start with a free<br><em class="em">discovery call</em></h2>
+      <p class="body-l mb-32" style="max-width:420px;margin:0 auto 32px;">We'll tell you honestly what your brand's visual identity needs — and whether we're the right fit.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn-primary" style="padding:16px 36px;font-size:13px;">Book a discovery call ↗</a>
+        <a href="services.html" class="btn-ghost" style="padding:15px 28px;">View all services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div><a href="index.html" class="footer-logo">zareya<span>.</span></a><p class="footer-tagline">African brands, brilliantly told.</p>        <form class="newsletter-row" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleNewsletter(event, this)">
+          <input type="hidden" name="form-name" value="newsletter">
+          <input type="hidden" name="bot-field" style="display:none">
+          <input class="newsletter-input" type="email" name="email" placeholder="Subscribe to The Zareya Letter" required>
+          <button class="newsletter-btn" type="submit">Subscribe →</button>
+        </form></div>
+      <div class="footer-col"><h4>Services</h4><a href="service-brand-strategy.html">Brand Strategy</a><a href="service-visual-identity.html">Visual Identity</a><a href="service-campaigns.html">Campaigns</a><a href="service-content.html">Content Production</a><a href="service-website.html">Website & Digital</a><a href="service-research.html">Market Research</a></div>
+      <div class="footer-col"><h4>Navigate</h4><a href="process.html">The Illumination Process</a><a href="work.html">Work</a><a href="insights.html">Insights</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Zareya. Westlands, Nairobi.</div>
+      <div class="footer-social"><a href="https://ke.linkedin.com/company/borastudios" target="_blank" rel="noopener">LinkedIn</a><a href="https://instagram.com/zareya.media" target="_blank" rel="noopener">Instagram</a><a href="privacy.html">Privacy</a></div>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+<script src="js/nav.js"></script><script src="js/animations.js"></script><script src="js/contact-form.js"></script><script src="js/theme.js"></script>
+<script>function toggleFaq(el){const a=el.nextElementSibling,c=el.querySelector('.faq-chevron'),o=a.classList.contains('open');document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.faq-chevron').forEach(x=>x.classList.remove('open'));if(!o){a.classList.add('open');c.classList.add('open');}}</script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights — Zareya</title>
+  <meta name="description" content="Brand and marketing thinking from Zareya — perspectives on African business, brand strategy, and what makes campaigns work.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Insights — Zareya">
+  <meta property="og:description" content="The things we think about, the research we do, and the patterns we see building brands across the continent.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zareya.co.ke/insights.html">
+  <link rel="stylesheet" href="css/vars.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <style>
+    /* Post modal */
+    #post-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 9, 8, 0.94);
+      z-index: var(--z-modal);
+      display: none;
+      justify-content: center;
+      overflow-y: auto;
+      padding: 40px 24px;
+    }
+    #post-modal-overlay.open { display: flex; }
+
+    #post-modal {
+      background: var(--bg);
+      width: min(760px, 100%);
+      height: fit-content;
+      animation: modalIn 0.28s var(--ease);
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .post-modal-close {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      font-size: 20px;
+      color: var(--text-2);
+      cursor: pointer;
+      background: var(--bg-2);
+      border: 1px solid var(--border-2);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: color var(--duration-sm);
+      z-index: 10;
+    }
+    .post-modal-close:hover { color: var(--rose); border-color: var(--rose); }
+
+    .post-hero {
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 64px;
+      font-style: italic;
+      color: var(--text-3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-content {
+      padding: 48px 52px 60px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .post-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 16px;
+    }
+
+    .post-title {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .post-meta {
+      font-size: 12px;
+      color: var(--text-3);
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-body p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text-2);
+      line-height: 1.9;
+      margin-bottom: 24px;
+    }
+
+    .post-body h2 {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--text);
+      margin: 36px 0 16px;
+    }
+
+    .post-body blockquote {
+      border-left: 2px solid var(--rose);
+      padding: 4px 0 4px 24px;
+      margin: 28px 0;
+      font-family: var(--serif);
+      font-size: 20px;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Filter tabs */
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .filter-pill {
+      padding: 7px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-2);
+      border: 1px solid var(--border-2);
+      cursor: pointer;
+      transition: all var(--duration-sm);
+      border-radius: var(--radius);
+      background: transparent;
+    }
+    .filter-pill:hover,
+    .filter-pill.active {
+      border-color: var(--rose);
+      color: var(--rose);
+      background: var(--rose-10);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">zareya<span>.</span></a>
+  <div class="nav-links">
+    <a href="process.html" class="nav-link">The Process</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="work.html" class="nav-link">Work</a>
+    <a href="insights.html" class="nav-link active">Insights</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-cta">Start a project</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a href="process.html" class="nav-link">The Process</a>
+  <a href="services.html" class="nav-link">Services</a>
+  <a href="work.html" class="nav-link">Work</a>
+  <a href="insights.html" class="nav-link">Insights</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-cta">Start a project</a>
+</div>
+
+
+<!-- ═══ PAGE HEADER ═══ -->
+<div class="page-top">
+  <div class="page-header">
+    <div class="container">
+      <div class="eyebrow mb-24 reveal">Thinking &amp; perspectives</div>
+      <h1 class="d-xl mb-24 reveal reveal-delay-1">
+        Insights on brand,<br>
+        marketing, <em class="em">&amp; Africa</em>
+      </h1>
+      <p class="body-l reveal reveal-delay-2" style="max-width: 520px;">
+        The things we think about, the research we do, and the patterns
+        we see building brands across the continent.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ FEATURED POST ═══ -->
+<section class="section-sm">
+  <div class="container">
+    <div class="insight-featured reveal" onclick="openPost('featured')">
+      <div class="insight-featured-body">
+        <div class="eyebrow mb-16">Featured</div>
+        <div class="insight-featured-title">
+          The African Brand Opportunity: Why Distinctiveness Beats Imitation
+        </div>
+        <p class="body mb-24">
+          African brands that try to replicate Western aesthetics are losing
+          ground to those that lean into specificity. Here's what we've learned
+          building brands across the continent.
+        </p>
+        <div style="font-size: 12px; font-weight: 500; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px;">
+          March 2026 · 12 min read
+        </div>
+        <span class="btn-link">Read article <span>→</span></span>
+      </div>
+      <div class="insight-featured-visual">
+        <span style="font-family: var(--serif); font-size: 80px; font-style: italic; color: rgba(194,84,122,0.15); position: relative; z-index: 1;">✦</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ ALL POSTS ═══ -->
+<section class="section">
+  <div class="container">
+
+    <!-- Filter row -->
+    <div class="filter-row reveal">
+      <button class="filter-pill active" onclick="filterPosts('all', this)">All</button>
+      <button class="filter-pill" onclick="filterPosts('brand-strategy', this)">Brand Strategy</button>
+      <button class="filter-pill" onclick="filterPosts('campaigns', this)">Campaigns</button>
+      <button class="filter-pill" onclick="filterPosts('market-research', this)">Market Research</button>
+      <button class="filter-pill" onclick="filterPosts('visual-identity', this)">Visual Identity</button>
+      <button class="filter-pill" onclick="filterPosts('industry-report', this)">Industry Reports</button>
+    </div>
+
+    <!-- Posts grid -->
+    <!-- When Supabase is connected, js/insights-feed.js populates this dynamically -->
+    <div class="grid-3" id="posts-grid">
+
+      <div class="insight-card reveal" data-cat="brand-strategy" onclick="openPost('post1')">
+        <div class="insight-image" style="background: linear-gradient(135deg, #1A2436, #2D3E58);">Strategy</div>
+        <div class="insight-category">Brand Strategy</div>
+        <div class="insight-title">Why Most Kenyan Brand Refreshes Fail (and What to Do Instead)</div>
+        <div class="insight-excerpt">A rebrand is not a logo change. It's a strategic repositioning. Here's how to know the difference before you spend the budget.</div>
+        <div class="insight-meta"><span>Feb 2026</span><span>·</span><span>8 min</span></div>
+      </div>
+
+      <div class="insight-card reveal reveal-delay-1" data-cat="campaigns" onclick="openPost('post2')">
+        <div class="insight-image" style="background: linear-gradient(135deg, #2A1A0A, #4A3010);">TikTok</div>
+        <div class="insight-category">Campaigns</div>
+        <div class="insight-title">The TikTok Playbook for African Brands: What Works, What Doesn't</div>
+        <div class="insight-excerpt">We've run 23 TikTok campaigns for African brands. The results are counterintuitive. Here's what we've learned.</div>
+        <div class="insight-meta"><span>Jan 2026</span><span>·</span><span>11 min</span></div>
+      </div>
+
+      <div class="insight-card reveal reveal-delay-2" data-cat="market-research" onclick="openPost('post3')">
+        <div class="insight-image" style="background: linear-gradient(135deg, #0A1A12, #142B1E);">Research</div>
+        <div class="insight-category">Market Research</div>
+        <div class="insight-title">Understanding Gen Z in Nairobi: The Consumer Brands Need to Win</div>
+        <div class="insight-excerpt">Primary research with 400 Nairobi Gen Z consumers. Their relationship with brands is fundamentally different from what most marketers assume.</div>
+        <div class="insight-meta"><span>Dec 2025</span><span>·</span><span>15 min</span></div>
+      </div>
+
+      <div class="insight-card reveal" data-cat="visual-identity" onclick="openPost('post4')">
+        <div class="insight-image" style="background: linear-gradient(135deg, #1A0A1A, #2D1A2D);">Colour</div>
+        <div class="insight-category">Visual Identity</div>
+        <div class="insight-title">Colour in African Brand Identity: Moving Beyond Pan-African Cliché</div>
+        <div class="insight-excerpt">How African brands can draw on local visual culture without falling into the trap of decorative tokenism.</div>
+        <div class="insight-meta"><span>Nov 2025</span><span>·</span><span>7 min</span></div>
+      </div>
+
+      <div class="insight-card reveal reveal-delay-1" data-cat="brand-strategy" onclick="openPost('post5')">
+        <div class="insight-image" style="background: linear-gradient(135deg, #1A1208, #332210);">Position</div>
+        <div class="insight-category">Brand Strategy</div>
+        <div class="insight-title">The One-Sentence Positioning Test: Is Your Brand Actually Clear?</div>
+        <div class="insight-excerpt">If you can't explain what your brand is and who it's for in one sentence, you don't have a positioning. You have a description.</div>
+        <div class="insight-meta"><span>Oct 2025</span><span>·</span><span>5 min</span></div>
+      </div>
+
+      <div class="insight-card reveal reveal-delay-2" data-cat="industry-report" onclick="openPost('post6')">
+        <div class="insight-image" style="background: linear-gradient(135deg, #080A1A, #101830);">Fintech</div>
+        <div class="insight-category">Industry Report</div>
+        <div class="insight-title">The State of African Fintech Branding: A 2025 Review</div>
+        <div class="insight-excerpt">How Kenya's fintech brands are positioning and communicating — and what the category leaders are doing differently.</div>
+        <div class="insight-meta"><span>Sep 2025</span><span>·</span><span>18 min</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ NEWSLETTER ═══ -->
+<section style="background: var(--bg-2); border-top: 1px solid var(--border); padding: 72px 0; text-align: center;">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow mb-16">Never miss a perspective</div>
+      <h2 class="d-md mb-16">The Zareya Letter</h2>
+      <p class="body mb-32" style="max-width: 380px; margin: 0 auto 32px;">
+        Brand and marketing thinking, delivered fortnightly.
+        No filler — just what we're seeing and thinking.
+      </p>
+      <div style="display: flex; max-width: 380px; margin: 0 auto; border-bottom: 1px solid var(--border-2);">
+        <input class="newsletter-input" type="email" placeholder="Your email address" id="newsletter-email" style="flex:1;background:transparent;border:none;outline:none;font-family:var(--sans);font-size:14px;font-weight:300;color:var(--text);padding:8px 0;">
+        <button class="newsletter-btn" onclick="subscribeNewsletter()" style="background:none;border:none;color:var(--rose);font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;padding:8px 0;transition:color var(--duration-sm);">Subscribe →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">zareya<span>.</span></a>
+        <p class="footer-tagline">African brands, brilliantly told. Strategy, identity, and campaigns for ambitious businesses across the continent.</p>
+                <form class="newsletter-row" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleNewsletter(event, this)">
+          <input type="hidden" name="form-name" value="newsletter">
+          <input type="hidden" name="bot-field" style="display:none">
+          <input class="newsletter-input" type="email" name="email" placeholder="Subscribe to The Zareya Letter" required>
+          <button class="newsletter-btn" type="submit">Subscribe →</button>
+        </form>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="process.html">The Illumination Process</a>
+        <a href="services.html">Services</a>
+        <a href="work.html">Work</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="services.html">Brand Strategy</a>
+        <a href="services.html">Visual Identity</a>
+        <a href="services.html">Campaigns</a>
+        <a href="services.html">Content Production</a>
+        <a href="services.html">Website &amp; Digital</a>
+        <a href="services.html">Market Research</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Zareya. Westlands, Nairobi. All rights reserved.</div>
+      <div class="footer-social">
+        <a href="https://ke.linkedin.com/company/borastudios" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://instagram.com/zareya.media" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══ POST MODAL ═══ -->
+<div id="post-modal-overlay" onclick="if(event.target===this)closePost()">
+  <div class="post-modal-close" onclick="closePost()">×</div>
+  <div id="post-modal">
+    <div class="post-hero" id="post-hero"></div>
+    <div class="post-content">
+      <div class="post-eyebrow" id="post-cat"></div>
+      <div class="post-title" id="post-title"></div>
+      <div class="post-meta" id="post-meta"></div>
+      <div class="post-body" id="post-body"></div>
+      <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; gap: 12px; flex-wrap: nowrap;">
+        <a href="contact.html" class="btn-primary" style="white-space: nowrap;">Work with us ↗</a>
+        <button class="btn-ghost" onclick="closePost()" style="white-space: nowrap;">← Back to Insights</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/nav.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/contact-form.js"></script>
+<script src="js/theme.js"></script>
+</body>
+</html>
