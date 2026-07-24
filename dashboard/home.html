@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Zareya</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-logo">
+      <div class="sb-logo-mark">zareya<span>.</span></div>
+      <div class="sb-badge">Admin</div>
+    </div>
+    <nav class="sb-nav">
+      <div class="sb-section-label">Overview</div>
+      <a href="home.html" class="sb-item active">
+        <span class="sb-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+        Dashboard
+      </a>
+      <div class="sb-section-label">Content</div>
+      <a href="blog/index.html" class="sb-item">
+        <span class="sb-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+        Blog Posts
+        <span class="sb-count" id="post-count">0</span>
+      </a>
+      <a href="casestudies/index.html" class="sb-item">
+        <span class="sb-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+        Case Studies
+        <span class="sb-count" id="cs-count">0</span>
+      </a>
+      <div class="sb-section-label">Settings</div>
+      <a href="seo/index.html" class="sb-item">
+        <span class="sb-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+        SEO Settings
+      </a>
+      <div class="sb-section-label">Site</div>
+      <a href="../index.html" target="_blank" class="sb-item">
+        <span class="sb-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+        View Website
+      </a>
+    </nav>
+    <div class="sb-footer">
+      <div class="sb-user" onclick="dashLogout()">
+        <div class="sb-avatar" id="sb-avatar">K</div>
+        <div>
+          <div class="sb-user-name" id="sb-user-name">Kent</div>
+          <div class="sb-user-role" id="sb-user-role">Admin · Sign out</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <button class="mobile-menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="topbar-title">Dashboard</div>
+      <div class="topbar-actions">
+        <a href="blog/new.html" class="btn-primary">+ New Post</a>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Published Posts</div>
+          <div class="stat-value" id="stat-posts">0</div>
+          <div class="stat-sub">Insights articles live</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Case Studies</div>
+          <div class="stat-value" id="stat-cs">0</div>
+          <div class="stat-sub">Published on Work page</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Draft Posts</div>
+          <div class="stat-value" id="stat-drafts">0</div>
+          <div class="stat-sub">Saved, not published</div>
+        </div>
+      </div>
+
+      <!-- Two columns -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
+
+        <!-- Recent posts -->
+        <div>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Recent Posts</div>
+            </div>
+            <a href="blog/index.html" class="btn-ghost" style="font-size:11px;padding:6px 12px;">View all</a>
+          </div>
+          <div class="table-wrap" id="recent-posts">
+            <table>
+              <thead><tr><th>Title</th><th>Status</th></tr></thead>
+              <tbody id="posts-tbody">
+                <tr><td colspan="2" style="color:var(--text-3);text-align:center;padding:20px;">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Recent case studies -->
+        <div>
+          <div class="section-header">
+            <div>
+              <div class="section-title">Case Studies</div>
+            </div>
+            <a href="casestudies/index.html" class="btn-ghost" style="font-size:11px;padding:6px 12px;">View all</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Client</th><th>Status</th></tr></thead>
+              <tbody id="cs-tbody">
+                <tr><td colspan="2" style="color:var(--text-3);text-align:center;padding:20px;">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick actions -->
+      <div class="section-header"><div class="section-title">Quick Actions</div></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+        <a href="blog/new.html" class="card" style="cursor:pointer;text-decoration:none;transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--rose)'" onmouseout="this.style.borderColor=''">
+          <div style="color:var(--rose);margin-bottom:12px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div class="card-title" style="font-size:15px;">Write a Blog Post</div>
+          <div class="card-sub" style="margin-bottom:0;">Publish to the Insights page</div>
+        </a>
+        <a href="casestudies/new.html" class="card" style="cursor:pointer;text-decoration:none;transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--rose)'" onmouseout="this.style.borderColor=''">
+          <div style="color:var(--rose);margin-bottom:12px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="card-title" style="font-size:15px;">Add Case Study</div>
+          <div class="card-sub" style="margin-bottom:0;">Publish to the Work page</div>
+        </a>
+        <a href="seo/index.html" class="card" style="cursor:pointer;text-decoration:none;transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--rose)'" onmouseout="this.style.borderColor=''">
+          <div style="color:var(--rose);margin-bottom:12px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <div class="card-title" style="font-size:15px;">Edit SEO</div>
+          <div class="card-sub" style="margin-bottom:0;">Update meta titles & descriptions</div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="js/auth.js"></script>
+<script src="js/blog.js"></script>
+<script src="js/casestudies.js"></script>
+<script>
+  requireAuth();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const posts = getPosts();
+    const css   = getCaseStudies();
+    const published = posts.filter(p => p.published).length;
+    const drafts    = posts.filter(p => !p.published).length;
+
+    document.getElementById('stat-posts').textContent  = published;
+    document.getElementById('stat-cs').textContent     = css.filter(c => c.published).length;
+    document.getElementById('stat-drafts').textContent = drafts;
+    document.getElementById('post-count').textContent  = posts.length;
+    document.getElementById('cs-count').textContent    = css.length;
+
+    /* Recent posts table */
+    const ptbody = document.getElementById('posts-tbody');
+    ptbody.innerHTML = posts.slice(0,5).map(p => `
+      <tr onclick="window.location='blog/edit.html?id=${p.id}'" style="cursor:pointer;">
+        <td><div class="td-main" style="font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;">${p.title}</div></td>
+        <td><span class="badge ${p.published?'badge-green':'badge-grey'}">${p.published?'Live':'Draft'}</span></td>
+      </tr>`).join('') || '<tr><td colspan="2" style="color:var(--text-3);text-align:center;">No posts yet</td></tr>';
+
+    /* Case studies table */
+    const ctbody = document.getElementById('cs-tbody');
+    ctbody.innerHTML = css.slice(0,5).map(c => `
+      <tr onclick="window.location='casestudies/edit.html?id=${c.id}'" style="cursor:pointer;">
+        <td><div class="td-main">${c.client}</div><div style="font-size:11px;color:var(--text-3);">${c.category}</div></td>
+        <td><span class="badge ${c.published?'badge-green':'badge-grey'}">${c.published?'Live':'Draft'}</span></td>
+      </tr>`).join('') || '<tr><td colspan="2" style="color:var(--text-3);text-align:center;">No case studies yet</td></tr>';
+  });
+
+  function toast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg; el.classList.add('show');
+    clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2800);
+  }
+</script>
+</body>
+</html>
