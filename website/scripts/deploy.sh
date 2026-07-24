@@ -3,7 +3,11 @@
 # Commits any changes in the website/ folder and pushes to GitHub → Netlify deploys.
 # Safe: only stages website content, never force-pushes.
 set -e
-cd "$(dirname "$0")/.."   # repo root
+# Resolve to REPO root: this script lives at <repo>/website/scripts/deploy.sh
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+cd "$REPO_ROOT"
+echo "Deploy working dir: $REPO_ROOT"
 
 MSG="${1:-Automated update via Hermes}"
 
