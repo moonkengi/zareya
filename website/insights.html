@@ -246,59 +246,8 @@
       <button class="filter-pill" onclick="filterPosts('industry-report', this)">Industry Reports</button>
     </div>
 
-    <!-- Posts grid -->
-    <!-- When Supabase is connected, js/insights-feed.js populates this dynamically -->
-    <div class="grid-3" id="posts-grid">
-
-      <div class="insight-card reveal" data-cat="brand-strategy" onclick="openPost('post1')">
-        <div class="insight-image" style="background: linear-gradient(135deg, #1A2436, #2D3E58);">Strategy</div>
-        <div class="insight-category">Brand Strategy</div>
-        <div class="insight-title">Why Most Kenyan Brand Refreshes Fail (and What to Do Instead)</div>
-        <div class="insight-excerpt">A rebrand is not a logo change. It's a strategic repositioning. Here's how to know the difference before you spend the budget.</div>
-        <div class="insight-meta"><span>Feb 2026</span><span>·</span><span>8 min</span></div>
-      </div>
-
-      <div class="insight-card reveal reveal-delay-1" data-cat="campaigns" onclick="openPost('post2')">
-        <div class="insight-image" style="background: linear-gradient(135deg, #2A1A0A, #4A3010);">TikTok</div>
-        <div class="insight-category">Campaigns</div>
-        <div class="insight-title">The TikTok Playbook for African Brands: What Works, What Doesn't</div>
-        <div class="insight-excerpt">We've run 23 TikTok campaigns for African brands. The results are counterintuitive. Here's what we've learned.</div>
-        <div class="insight-meta"><span>Jan 2026</span><span>·</span><span>11 min</span></div>
-      </div>
-
-      <div class="insight-card reveal reveal-delay-2" data-cat="market-research" onclick="openPost('post3')">
-        <div class="insight-image" style="background: linear-gradient(135deg, #0A1A12, #142B1E);">Research</div>
-        <div class="insight-category">Market Research</div>
-        <div class="insight-title">Understanding Gen Z in Nairobi: The Consumer Brands Need to Win</div>
-        <div class="insight-excerpt">Primary research with 400 Nairobi Gen Z consumers. Their relationship with brands is fundamentally different from what most marketers assume.</div>
-        <div class="insight-meta"><span>Dec 2025</span><span>·</span><span>15 min</span></div>
-      </div>
-
-      <div class="insight-card reveal" data-cat="visual-identity" onclick="openPost('post4')">
-        <div class="insight-image" style="background: linear-gradient(135deg, #1A0A1A, #2D1A2D);">Colour</div>
-        <div class="insight-category">Visual Identity</div>
-        <div class="insight-title">Colour in African Brand Identity: Moving Beyond Pan-African Cliché</div>
-        <div class="insight-excerpt">How African brands can draw on local visual culture without falling into the trap of decorative tokenism.</div>
-        <div class="insight-meta"><span>Nov 2025</span><span>·</span><span>7 min</span></div>
-      </div>
-
-      <div class="insight-card reveal reveal-delay-1" data-cat="brand-strategy" onclick="openPost('post5')">
-        <div class="insight-image" style="background: linear-gradient(135deg, #1A1208, #332210);">Position</div>
-        <div class="insight-category">Brand Strategy</div>
-        <div class="insight-title">The One-Sentence Positioning Test: Is Your Brand Actually Clear?</div>
-        <div class="insight-excerpt">If you can't explain what your brand is and who it's for in one sentence, you don't have a positioning. You have a description.</div>
-        <div class="insight-meta"><span>Oct 2025</span><span>·</span><span>5 min</span></div>
-      </div>
-
-      <div class="insight-card reveal reveal-delay-2" data-cat="industry-report" onclick="openPost('post6')">
-        <div class="insight-image" style="background: linear-gradient(135deg, #080A1A, #101830);">Fintech</div>
-        <div class="insight-category">Industry Report</div>
-        <div class="insight-title">The State of African Fintech Branding: A 2025 Review</div>
-        <div class="insight-excerpt">How Kenya's fintech brands are positioning and communicating — and what the category leaders are doing differently.</div>
-        <div class="insight-meta"><span>Sep 2025</span><span>·</span><span>18 min</span></div>
-      </div>
-
-    </div>
+    <!-- Posts grid — populated by js/insights-feed.js from content/posts.json -->
+    <div class="grid-3" id="posts-grid"></div>
   </div>
 </section>
 
@@ -390,6 +339,7 @@
 <script src="js/nav.js"></script>
 <script src="js/animations.js"></script>
 <script src="js/contact-form.js"></script>
+<script src="js/insights-feed.js"></script>
 <script src="js/theme.js"></script>
 </body>
 </html>
