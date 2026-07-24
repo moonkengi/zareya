@@ -1,0 +1,21 @@
+# Netlify build config for Zareya
+# Locks the publish directory so deploys don't break if dashboard settings change.
+[build]
+  publish = "website"
+  command = ""
+
+# Cache static assets
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

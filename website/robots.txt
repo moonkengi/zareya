@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Dashboard / admin area should never be indexed
+Disallow: /dashboard/
+
+Sitemap: https://zareya.co.ke/sitemap.xml
