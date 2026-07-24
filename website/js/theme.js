@@ -1,6 +1,7 @@
 /* ============================================================
    ZAREYA — Theme Switcher
-   Light mode is default. Dark mode toggled by button.
+   Light mode is default. Dark mode toggled by the Profile
+   portal (js/profile.js) via window.ZareyaTheme.toggle().
    Preference saved to localStorage so it persists.
    ============================================================ */
 
@@ -16,104 +17,7 @@
     html.classList.add('dark');
   }
 
-  /* ── INJECT TOGGLE BUTTON INTO NAV ──────────────────── */
-  /* Waits for DOM then adds button between nav links and CTA */
-  function injectToggle() {
-    const navLinks = document.querySelector('.nav-links');
-    if (!navLinks) return;
-
-    const btn = document.createElement('button');
-    btn.id = 'theme-toggle';
-    btn.setAttribute('aria-label', 'Toggle dark mode');
-    btn.style.cssText = `
-      width: 34px; height: 34px;
-      display: flex; align-items: center; justify-content: center;
-      background: transparent;
-      border: 1px solid var(--border-2);
-      border-radius: 50%;
-      cursor: pointer;
-      color: var(--text-2);
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-    `;
-
-    btn.innerHTML = isDark()
-      ? sunIcon()   /* dark mode active — show sun to switch to light */
-      : moonIcon(); /* light mode active — show moon to switch to dark */
-
-    btn.addEventListener('click', toggleTheme);
-    btn.addEventListener('mouseenter', () => {
-      btn.style.borderColor = 'var(--rose)';
-      btn.style.color = 'var(--rose)';
-    });
-    btn.addEventListener('mouseleave', () => {
-      btn.style.borderColor = 'var(--border-2)';
-      btn.style.color = 'var(--text-2)';
-    });
-
-    /* Insert before the CTA button */
-    const cta = navLinks.querySelector('.nav-cta');
-    if (cta) {
-      navLinks.insertBefore(btn, cta);
-    } else {
-      navLinks.appendChild(btn);
-    }
-
-    /* Also add to mobile nav */
-    injectMobileToggle();
-  }
-
-  function injectMobileToggle() {
-    const mobileNav = document.getElementById('nav-mobile');
-    if (!mobileNav) return;
-
-    const row = document.createElement('div');
-    row.style.cssText = `
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-    `;
-
-    const label = document.createElement('span');
-    label.style.cssText = `
-      font-size: 13px; font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--text-2);
-    `;
-    label.textContent = isDark() ? 'Light Mode' : 'Dark Mode';
-
-    const toggle = document.createElement('div');
-    toggle.style.cssText = `
-      width: 44px; height: 24px;
-      background: ${isDark() ? 'var(--rose)' : 'var(--border-2)'};
-      border-radius: 12px; position: relative; cursor: pointer;
-      transition: background 0.2s ease; flex-shrink: 0;
-    `;
-    const knob = document.createElement('div');
-    knob.style.cssText = `
-      width: 18px; height: 18px; background: #fff; border-radius: 50%;
-      position: absolute; top: 3px;
-      left: ${isDark() ? '23px' : '3px'};
-      transition: left 0.2s ease;
-    `;
-    toggle.appendChild(knob);
-
-    toggle.addEventListener('click', () => {
-      toggleTheme();
-      /* Update label and knob */
-      label.textContent = isDark() ? 'Light Mode' : 'Dark Mode';
-      toggle.style.background = isDark() ? 'var(--rose)' : 'var(--border-2)';
-      knob.style.left = isDark() ? '23px' : '3px';
-    });
-
-    row.appendChild(label);
-    row.appendChild(toggle);
-
-    /* Insert as first item */
-    mobileNav.insertBefore(row, mobileNav.firstChild);
-  }
-
-  /* ── TOGGLE LOGIC ────────────────────────────────────── */
+  /* ── THEME TOGGLE LOGIC (now driven by the Profile portal) ─ */
   function isDark() {
     return html.classList.contains('dark');
   }
@@ -127,13 +31,16 @@
       html.classList.add('dark');
       localStorage.setItem(STORAGE_KEY, 'dark');
     }
-
-    /* Update the desktop toggle icon */
-    const btn = document.getElementById('theme-toggle');
-    if (btn) {
-      btn.innerHTML = isDark() ? sunIcon() : moonIcon();
-    }
+    /* Notify listeners (the Profile portal reflects the new state) */
+    document.dispatchEvent(new CustomEvent('zareya:themechange', { detail: { dark: !dark } }));
   }
+
+  /* Expose a small API so profile.js can read/drive theme + reuse icons */
+  window.ZareyaTheme = { isDark, toggle: toggleTheme, STORAGE_KEY, sunIcon, moonIcon };
+
+  /* NOTE: the top-right nav toggle is no longer injected here.
+     The Profile portal (js/profile.js) owns theme switching now,
+     replacing the old standalone dark-mode toggle button. */
 
   /* ── SVG ICONS ───────────────────────────────────────── */
   function moonIcon() {
@@ -165,13 +72,6 @@
     if (prefersDark) {
       html.classList.add('dark');
     }
-  }
-
-  /* ── INIT ────────────────────────────────────────────── */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectToggle);
-  } else {
-    injectToggle();
   }
 
 })();

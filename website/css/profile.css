@@ -1,0 +1,154 @@
+/* ============================================================
+   ZAREYA — Profile Portal
+   Slide-in drawer with: projects tracker, theme switch,
+   language switch, sitemap link, and account preferences.
+   ============================================================ */
+
+/* ── PROFILE BUTTON (replaces old theme toggle) ─────────── */
+#profile-btn {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border-2);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text-2);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+#profile-btn:hover { border-color: var(--rose); color: var(--rose); }
+#profile-btn svg { width: 16px; height: 16px; }
+
+/* Mobile nav: profile row */
+.profile-mobile-row {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.profile-mobile-row .pm-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--rose); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 14px;
+}
+.profile-mobile-row .pm-name { font-size: 13px; font-weight: 500; color: var(--text-2); }
+
+/* ── DRAWER ────────────────────────────────────────────── */
+#profile-overlay {
+  position: fixed; inset: 0;
+  background: rgba(11, 9, 8, 0.55);
+  z-index: calc(var(--z-modal, 1000) + 10);
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+#profile-overlay.open { opacity: 1; visibility: visible; }
+
+#profile-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(420px, 100%);
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  z-index: calc(var(--z-modal, 1000) + 11);
+  transform: translateX(100%);
+  transition: transform 0.3s var(--ease, ease);
+  display: flex; flex-direction: column;
+  box-shadow: -20px 0 60px rgba(0,0,0,0.25);
+}
+#profile-overlay.open #profile-drawer { transform: translateX(0); }
+
+.pd-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 22px 22px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.pd-avatar {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose), #c2547a);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 18px; flex-shrink: 0;
+}
+.pd-name { font-family: var(--serif, serif); font-size: 19px; color: var(--text); }
+.pd-sub { font-size: 12px; color: var(--text-3); }
+.pd-close {
+  margin-left: auto; background: transparent; border: none;
+  color: var(--text-2); font-size: 22px; cursor: pointer; line-height: 1;
+  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+}
+.pd-close:hover { color: var(--rose); background: var(--rose-10, rgba(194,84,122,0.1)); }
+
+.pd-body { flex: 1; overflow-y: auto; padding: 18px 22px 28px; }
+.pd-section { margin-bottom: 26px; }
+.pd-section-title {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--text-3);
+  margin-bottom: 12px;
+}
+
+/* Project cards */
+.proj {
+  border: 1px solid var(--border); border-radius: var(--radius, 10px);
+  padding: 14px; margin-bottom: 12px;
+}
+.proj-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.proj-name { font-size: 14px; font-weight: 500; color: var(--text); }
+.proj-status {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 20px; white-space: nowrap;
+}
+.proj-status.live { background: rgba(46,160,97,0.14); color: #2ea061; }
+.proj-status.progress { background: rgba(214,158,46,0.16); color: #d69e2e; }
+.proj-status.review { background: rgba(96,118,214,0.16); color: #6076d6; }
+.proj-status.plan { background: rgba(120,120,120,0.16); color: #888; }
+.proj-meta { font-size: 12px; color: var(--text-3); margin: 6px 0 10px; }
+.proj-bar { height: 6px; border-radius: 4px; background: var(--bg-2); overflow: hidden; }
+.proj-bar > span { display: block; height: 100%; background: var(--rose); border-radius: 4px; }
+.proj-link { font-size: 12px; color: var(--rose); text-decoration: none; display: inline-block; margin-top: 8px; }
+.proj-link:hover { text-decoration: underline; }
+
+/* Setting rows */
+.set-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+}
+.set-row:last-child { border-bottom: none; }
+.set-label { font-size: 14px; color: var(--text); }
+.set-label small { display: block; font-size: 11px; color: var(--text-3); margin-top: 2px; }
+
+/* Language pills */
+.lang-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.lang-pill {
+  font-size: 12px; padding: 6px 12px; border-radius: 20px;
+  border: 1px solid var(--border-2); background: transparent;
+  color: var(--text-2); cursor: pointer; transition: all 0.15s ease;
+}
+.lang-pill:hover { border-color: var(--rose); color: var(--rose); }
+.lang-pill.active { background: var(--rose); color: #fff; border-color: var(--rose); }
+
+/* Theme switch (segmented) */
+.theme-seg { display: flex; border: 1px solid var(--border-2); border-radius: 20px; overflow: hidden; }
+.theme-seg button {
+  background: transparent; border: none; padding: 7px 14px;
+  font-size: 12px; cursor: pointer; color: var(--text-2); display: flex; align-items: center; gap: 6px;
+}
+.theme-seg button.active { background: var(--rose); color: #fff; }
+
+/* Link list */
+.pd-links { display: flex; flex-direction: column; gap: 2px; }
+.pd-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: var(--radius, 10px);
+  color: var(--text-2); text-decoration: none; font-size: 14px;
+  transition: background 0.15s ease;
+}
+.pd-link:hover { background: var(--bg-2); color: var(--text); }
+.pd-link svg { width: 16px; height: 16px; color: var(--rose); flex-shrink: 0; }
+
+.pd-foot {
+  padding: 14px 22px; border-top: 1px solid var(--border);
+  font-size: 11px; color: var(--text-3); text-align: center;
+}
+
+@media (max-width: 600px) {
+  #profile-drawer { width: 100%; }
+}

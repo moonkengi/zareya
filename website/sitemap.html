@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Map — Zareya</title>
+  <meta name="description" content="A full map of the Zareya website — pages, services, insights, and important links.">
+  <link rel="stylesheet" href="css/vars.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <style>
+    .sitemap-wrap { max-width: 860px; margin: 0 auto; padding: 60px 24px 90px; }
+    .sm-group { margin-bottom: 40px; }
+    .sm-group h2 { font-family: var(--serif); font-size: 22px; color: var(--text); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .sm-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+    .sm-link { display: block; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius); color: var(--text-2); text-decoration: none; transition: all 0.15s ease; }
+    .sm-link:hover { border-color: var(--rose); color: var(--rose); transform: translateY(-2px); }
+    .sm-link strong { display: block; font-size: 14px; color: var(--text); font-weight: 500; }
+    .sm-link span { font-size: 12px; color: var(--text-3); }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">zareya<span>.</span></a>
+  <div class="nav-links">
+    <a href="process.html" class="nav-link">The Process</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="work.html" class="nav-link">Work</a>
+    <a href="insights.html" class="nav-link">Insights</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-cta">Start a project</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="process.html" class="nav-link">The Process</a>
+  <a href="services.html" class="nav-link">Services</a>
+  <a href="work.html" class="nav-link">Work</a>
+  <a href="insights.html" class="nav-link">Insights</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-cta">Start a project</a>
+</div>
+
+<div class="page-top">
+  <div class="page-header">
+    <div class="container">
+      <div class="eyebrow mb-24 reveal">Navigate</div>
+      <h1 class="d-lg mb-24 reveal">Site Map</h1>
+      <p class="body-l reveal">Every page and important link across zareya.co.ke — organised so you can find anything fast.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sitemap-wrap">
+
+  <div class="sm-group">
+    <h2>Main Pages</h2>
+    <div class="sm-links">
+      <a class="sm-link" href="index.html"><strong>Home</strong><span>Overview &amp; capabilities</span></a>
+      <a class="sm-link" href="process.html"><strong>The Process</strong><span>Illumination methodology</span></a>
+      <a class="sm-link" href="services.html"><strong>Services</strong><span>What we do</span></a>
+      <a class="sm-link" href="work.html"><strong>Work</strong><span>Selected projects</span></a>
+      <a class="sm-link" href="insights.html"><strong>Insights</strong><span>Thinking &amp; perspectives</span></a>
+      <a class="sm-link" href="about.html"><strong>About</strong><span>Who we are</span></a>
+      <a class="sm-link" href="contact.html"><strong>Contact</strong><span>Start a project</span></a>
+    </div>
+  </div>
+
+  <div class="sm-group">
+    <h2>Services</h2>
+    <div class="sm-links">
+      <a class="sm-link" href="service-brand-strategy.html"><strong>Brand Strategy</strong><span>Positioning &amp; architecture</span></a>
+      <a class="sm-link" href="service-campaigns.html"><strong>Campaigns</strong><span>Creative &amp; media</span></a>
+      <a class="sm-link" href="service-content.html"><strong>Content Production</strong><span>Story &amp; assets</span></a>
+      <a class="sm-link" href="service-research.html"><strong>Market Research</strong><span>Insight &amp; strategy</span></a>
+      <a class="sm-link" href="service-visual-identity.html"><strong>Visual Identity</strong><span>Design systems</span></a>
+      <a class="sm-link" href="service-website.html"><strong>Website &amp; Digital</strong><span>Sites &amp; products</span></a>
+    </div>
+  </div>
+
+  <div class="sm-group">
+    <h2>Important Links</h2>
+    <div class="sm-links">
+      <a class="sm-link" href="sitemap.html"><strong>Site Map</strong><span>This page</span></a>
+      <a class="sm-link" href="privacy.html"><strong>Privacy &amp; Terms</strong><span>How we handle data</span></a>
+      <a class="sm-link" href="links.html"><strong>Link in Bio</strong><span>All our channels</span></a>
+      <a class="sm-link" href="insights.html"><strong>The Zareya Letter</strong><span>Newsletter</span></a>
+      <a class="sm-link" href="https://ke.linkedin.com/company/borastudios" target="_blank" rel="noopener"><strong>LinkedIn</strong><span>@borastudios</span></a>
+      <a class="sm-link" href="https://instagram.com/zareya.media" target="_blank" rel="noopener"><strong>Instagram</strong><span>@zareya.media</span></a>
+    </div>
+  </div>
+
+  <div class="sm-group">
+    <h2>Resources</h2>
+    <div class="sm-links">
+      <a class="sm-link" href="robots.txt"><strong>robots.txt</strong><span>Crawler rules</span></a>
+      <a class="sm-link" href="sitemap.xml"><strong>sitemap.xml</strong><span>XML for search engines</span></a>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="js/nav.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/contact-form.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>
