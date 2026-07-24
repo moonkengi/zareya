@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # deploy.sh — Zareya auto-deploy (Hermes automation).
-# Commits any changes in the website/ folder and pushes to GitHub → Netlify deploys.
+# Commits any changes in the public/ folder and pushes to GitHub → Netlify deploys.
 # Safe: only stages website content, never force-pushes.
 set -e
 # Resolve to REPO root: this script lives at <repo>/website/scripts/deploy.sh
@@ -11,7 +11,7 @@ echo "Deploy working dir: $REPO_ROOT"
 
 MSG="${1:-Automated update via Hermes}"
 
-git add website
+git add public
 # If nothing to commit, exit cleanly (no error, no empty push).
 if git diff --cached --quiet; then
   echo "No changes to deploy."

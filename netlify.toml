@@ -1,7 +1,8 @@
 # Netlify build config for Zareya
 # Locks the publish directory so deploys don't break if dashboard settings change.
+# NOTE: netlify.toml must live at the REPO ROOT for Netlify to read it.
 [build]
-  publish = "website"
+  publish = "public"
   command = ""
 
 # Cache static assets
