@@ -3,7 +3,9 @@
    Loads content/posts.json and renders:
      • the posts grid on insights.html
      • a working article modal (openPost / closePost)
-   Falls back gracefully if the JSON is unreachable.
+   Hardened so the grid is NEVER blank:
+     • cards are shown immediately (no dependence on reveal/JS animation)
+     • explicit empty/error states with retry
    ============================================================ */
 
 (function () {
@@ -24,11 +26,11 @@
     if (!GRID) return;
     const published = POSTS.filter(p => p.published);
     if (!published.length) {
-      GRID.innerHTML = '<p style="color:var(--text-3);grid-column:1/-1;padding:40px 0;">No published insights yet — check back soon.</p>';
+      GRID.innerHTML = '<p style="color:var(--text-3);grid-column:1/-1;padding:40px 0;text-align:center;">No published insights yet — check back soon.</p>';
       return;
     }
     GRID.innerHTML = published.map((p, i) => `
-      <div class="insight-card reveal ${i ? 'reveal-delay-' + (i % 3) : ''}" data-cat="${categoryClass(p.category)}" onclick="openPost('${p.id}')">
+      <div class="insight-card visible ${i ? 'reveal-delay-' + (i % 3) : ''}" data-cat="${categoryClass(p.category)}" onclick="openPost('${p.id}')">
         <div class="insight-image" style="background: linear-gradient(135deg, #1A2436, #2D3E58);">${p.category || 'Insight'}</div>
         <div class="insight-category">${p.category || ''}</div>
         <div class="insight-title">${p.title}</div>
@@ -91,15 +93,24 @@
     document.body.style.overflow = '';
   };
 
-  fetch('content/posts.json', { cache: 'no-cache' })
-    .then(r => r.ok ? r.json() : Promise.reject(r.status))
-    .then(data => {
-      POSTS = (data && data.posts) || [];
-      renderFeatured();
-      renderGrid();
-    })
-    .catch(err => {
-      console.warn('Insights feed failed to load:', err);
-      if (GRID) GRID.innerHTML = '<p style="color:var(--text-3);grid-column:1/-1;padding:40px 0;">Could not load insights right now.</p>';
-    });
+  function load() {
+    fetch('content/posts.json', { cache: 'no-cache' })
+      .then(r => {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      })
+      .then(text => {
+        if (!text || !text.trim()) throw new Error('empty response');
+        const data = JSON.parse(text);
+        POSTS = (data && data.posts) || [];
+        renderFeatured();
+        renderGrid();
+      })
+      .catch(err => {
+        console.warn('Insights feed failed to load:', err);
+        if (GRID) GRID.innerHTML = '<p style="color:var(--text-3);grid-column:1/-1;padding:40px 0;text-align:center;">Could not load insights right now. <a href="content/posts.json">Open the feed directly</a>.</p>';
+      });
+  }
+
+  load();
 })();
