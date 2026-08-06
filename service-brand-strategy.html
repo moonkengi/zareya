@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Strategy & Positioning — Zareya</title>
+  <meta name="description" content="Full brand strategy for African businesses — market research, competitive analysis, positioning architecture, brand personality, voice and tone. From KES 120,000.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/vars.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .deliverable-item {
+      display:flex; gap:16px; padding:20px 0;
+      border-bottom:1px solid var(--border); align-items:flex-start;
+    }
+    .deliverable-item:last-child { border-bottom:none; }
+    .del-icon {
+      width:36px; height:36px; background:var(--rose-10);
+      border:1px solid var(--rose-18); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      color:var(--rose); flex-shrink:0; margin-top:2px;
+    }
+    .del-title { font-size:15px; font-weight:500; color:var(--text); margin-bottom:4px; }
+    .del-desc { font-size:13px; font-weight:300; color:var(--text-2); line-height:1.7; }
+    .outcome-card {
+      background:var(--bg-2); border:1px solid var(--border);
+      padding:28px; border-radius:2px;
+    }
+    .outcome-number {
+      font-family:var(--serif); font-size:48px; font-weight:300;
+      color:var(--rose); line-height:1; margin-bottom:6px;
+    }
+    .outcome-label { font-size:13px; color:var(--text-2); }
+    .compare-row {
+      display:grid; grid-template-columns:1fr 1fr; gap:2px;
+      background:var(--border); margin-top:16px;
+    }
+    .compare-col { background:var(--bg-2); padding:24px; }
+    .compare-col.zareya { background:var(--bg); border-top:2px solid var(--rose); }
+    .compare-head { font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; margin-bottom:16px; }
+    .compare-item { font-size:13px; color:var(--text-2); padding:7px 0; border-bottom:1px solid var(--border); display:flex; gap:10px; align-items:flex-start; line-height:1.5; }
+    .compare-item:last-child { border-bottom:none; }
+    .compare-item svg { flex-shrink:0; margin-top:2px; }
+    .faq-item { border-bottom:1px solid var(--border); }
+    .faq-item:first-child { border-top:1px solid var(--border); }
+    .faq-q { padding:20px 0; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-size:15px; font-weight:500; color:var(--text); gap:16px; }
+    .faq-a { font-size:14px; font-weight:300; color:var(--text-2); line-height:1.8; padding-bottom:20px; display:none; }
+    .faq-a.open { display:block; }
+    .faq-chevron { flex-shrink:0; transition:transform 0.2s; color:var(--rose); }
+    .faq-chevron.open { transform:rotate(180deg); }
+    .price-box { background:var(--bg-2); border:1px solid var(--border-2); border-top:3px solid var(--rose); padding:36px; border-radius:2px; }
+    @media(max-width:768px) {
+      .compare-row { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">zareya<span>.</span></a>
+  <div class="nav-links">
+    <a href="process.html" class="nav-link">The Process</a>
+    <a href="services.html" class="nav-link active">Services</a>
+    <a href="work.html" class="nav-link">Work</a>
+    <a href="insights.html" class="nav-link">Insights</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-cta">Start a project</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="process.html" class="nav-link">The Process</a>
+  <a href="services.html" class="nav-link">Services</a>
+  <a href="work.html" class="nav-link">Work</a>
+  <a href="insights.html" class="nav-link">Insights</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-cta">Start a project</a>
+</div>
+
+<!-- HERO -->
+<div class="page-top">
+  <section style="padding:80px 0 64px;background:linear-gradient(to bottom,var(--bg-2),var(--bg));border-bottom:1px solid var(--border);">
+    <div class="container">
+      <a href="services.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-3);margin-bottom:24px;text-decoration:none;transition:color 0.15s;" class="reveal" onmouseover="this.style.color='var(--rose)'" onmouseout="this.style.color='var(--text-3)'">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        All Services
+      </a>
+      <div class="grid-2" style="gap:60px;align-items:end;">
+        <div>
+          <div class="eyebrow mb-16 reveal">Service 01</div>
+          <h1 class="d-xl mb-24 reveal reveal-delay-1">Brand Strategy<br>&amp; <em class="em">Positioning</em></h1>
+          <p class="body-l reveal reveal-delay-2" style="max-width:480px;">
+            The strategic foundation your entire business communicates from.
+            Every message, every design decision, every campaign — justified
+            against one clear truth about what your brand actually is.
+          </p>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="price-box">
+            <div class="eyebrow mb-12">Investment</div>
+            <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:var(--rose);line-height:1;margin-bottom:6px;">KES 120K<sup style="font-size:22px;">+</sup></div>
+            <div style="font-size:13px;color:var(--text-3);margin-bottom:24px;">3–4 weeks · 50% deposit to begin</div>
+            <a href="contact.html" class="btn-primary" style="width:100%;justify-content:center;">Start this engagement ↗</a>
+            <div style="font-size:12px;color:var(--text-3);text-align:center;margin-top:12px;">Or <a href="contact.html" style="color:var(--rose);">book a free discovery call</a> first</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- THE PROBLEM -->
+<section class="section">
+  <div class="container">
+    <div class="grid-2" style="gap:80px;align-items:center;">
+      <div class="reveal">
+        <div class="eyebrow mb-16">Why this matters</div>
+        <h2 class="d-lg mb-24">Most businesses skip strategy.<br><em class="em">They pay for it later.</em></h2>
+        <p class="body-l mb-16">A logo without strategy is decoration. A website without positioning is a digital brochure. Social media without a clear brand voice is just noise.</p>
+        <p class="body">Every shilling you spend on marketing before you have a clear brand strategy is partly wasted — because you're communicating without knowing what you're actually saying, to whom, and why they should care.</p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="padding:18px 20px;background:var(--bg-2);border:1px solid var(--border);border-left:3px solid #e05050;border-radius:2px;">
+            <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;">Without brand strategy</div>
+            <div style="font-size:13px;color:var(--text-2);">Competitors with weaker products win on perception. You compete on price because you can't justify charging more.</div>
+          </div>
+          <div style="padding:18px 20px;background:var(--bg-2);border:1px solid var(--border);border-left:3px solid #e05050;border-radius:2px;">
+            <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;">Without positioning</div>
+            <div style="font-size:13px;color:var(--text-2);">Every new hire, agency, or designer interprets your brand differently. Consistency is impossible without a document that governs decisions.</div>
+          </div>
+          <div style="padding:18px 20px;background:var(--bg-2);border:1px solid var(--border);border-left:3px solid #e05050;border-radius:2px;">
+            <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;">Without a brand voice</div>
+            <div style="font-size:13px;color:var(--text-2);">Your website says one thing, your social media says another, your sales team says a third. The customer is confused. Confused customers don't buy.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DELIVERABLES -->
+<section class="section">
+  <div class="container">
+    <div class="reveal mb-48">
+      <div class="eyebrow mb-16">What you receive</div>
+      <h2 class="d-md">Every deliverable.<br><em class="em">Nothing left out.</em></h2>
+    </div>
+    <div class="grid-2" style="gap:40px;">
+      <div class="reveal">
+        <div class="deliverable-item">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <div><div class="del-title">Market & Competitor Research</div><div class="del-desc">A mapped landscape of your category — who's positioning where, what gaps exist, and exactly where your opportunity to be genuinely different lives. We study 5–8 of your real competitors in depth.</div></div>
+        </div>
+        <div class="deliverable-item">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div><div class="del-title">Customer Insight Summary</div><div class="del-desc">What your actual customers value, how they describe you, and what drives their decision to choose you over alternatives. Based on interviews or surveys where accessible.</div></div>
+        </div>
+        <div class="deliverable-item">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div><div class="del-title">Brand Truth Statement</div><div class="del-desc">One paragraph — the honest answer to "what is this business really?" This is not a mission statement. It's the insight that makes your founders say "yes, that is exactly what we are."</div></div>
+        </div>
+        <div class="deliverable-item" style="border-bottom:none;">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div><div class="del-title">Competitive Whitespace Map</div><div class="del-desc">A visual showing exactly where your category clusters and where the white space is — the positioning territory that's available and ownable by your brand.</div></div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="deliverable-item">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+          <div><div class="del-title">Brand Positioning Statement</div><div class="del-desc">The precise articulation of who this brand is for, what it offers, and why it is different from every competitor. One sentence — tested until it can't be said by anyone else.</div></div>
+        </div>
+        <div class="deliverable-item">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <div><div class="del-title">Brand Personality (5 Attributes)</div><div class="del-desc">Five specific character traits — each with a behavioural description. Not "innovative." Specific, like "speaks plainly about complex things" or "treats the customer as capable." These govern every communication.</div></div>
+        </div>
+        <div class="deliverable-item">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div><div class="del-title">Brand Voice Guide</div><div class="del-desc">Tone, language rules, phrases to use and avoid, and real examples of on-brand vs off-brand communication. Every future copywriter, social media manager, or team member uses this.</div></div>
+        </div>
+        <div class="deliverable-item" style="border-bottom:none;">
+          <div class="del-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+          <div><div class="del-title">Messaging Hierarchy</div><div class="del-desc">The ranked order of your brand's claims — what to lead with, what to support it with, and what evidence proves each claim. No more guessing what to say on a homepage or in a pitch.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VALUE COMPARISON -->
+<section class="section">
+  <div class="container">
+    <div class="reveal mb-16">
+      <div class="eyebrow mb-16">The real cost of not doing this</div>
+      <h2 class="d-md mb-8">KES 120,000 vs the alternative</h2>
+      <p class="body" style="max-width:540px;">A junior marketing hire in Nairobi costs KES 60,000–80,000 per month — before NSSF, NHIF, equipment, and training. This engagement delivers a complete strategic foundation for less than two months of that cost, with zero ongoing commitment.</p>
+    </div>
+    <div class="compare-row reveal reveal-delay-1">
+      <div class="compare-col">
+        <div class="compare-head" style="color:var(--text-3);">Without brand strategy</div>
+        <div class="compare-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e05050" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Competing on price because you can't justify charging more</div>
+        <div class="compare-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e05050" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Every agency or freelancer you hire interprets your brand differently</div>
+        <div class="compare-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e05050" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Marketing spend without a clear message to amplify</div>
+        <div class="compare-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e05050" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Hiring decisions based on vibes, not a clear picture of what the brand needs</div>
+        <div class="compare-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e05050" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Rebrand required in 2–3 years because nothing was grounded in strategy</div>
+      </div>
+      <div class="compare-col zareya">
+        <div class="compare-head" style="color:var(--rose);">With Zareya brand strategy</div>
+        <div class="compare-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Positioning that justifies premium pricing — competitors struggle to match</div>
+        <div class="compare-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>One document governs every creative decision — no more inconsistency</div>
+        <div class="compare-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Every marketing shilling amplifies a clear, differentiated message</div>
+        <div class="compare-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>New team members understand the brand in 30 minutes — not 6 months</div>
+        <div class="compare-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Brand built to last — scales with the business, not replaced when you grow</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- OUTCOMES -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow mb-16 reveal">What changes</div>
+    <h2 class="d-md mb-48 reveal reveal-delay-1">Real outcomes from<br><em class="em">real engagements</em></h2>
+    <div class="grid-3 reveal reveal-delay-1">
+      <div class="outcome-card"><div class="outcome-number">340%</div><div class="outcome-label">Increase in organic sign-ups at Fika Finance in the quarter following their brand strategy engagement</div></div>
+      <div class="outcome-card"><div class="outcome-number">60%</div><div class="outcome-label">Above target valuation at Mbali Health's Series A — investor credibility built through brand repositioning</div></div>
+      <div class="outcome-card"><div class="outcome-number">78%</div><div class="outcome-label">Of Jua Energy's deals closed with zero price negotiation after launching with a premium brand positioning</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHO IT'S FOR -->
+<section class="section">
+  <div class="container">
+    <div class="grid-2" style="gap:60px;align-items:start;">
+      <div class="reveal">
+        <div class="eyebrow mb-16">Who this is for</div>
+        <h2 class="d-md mb-24">The right fit for<br><em class="em">brand strategy</em></h2>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="package-check-item">Businesses entering a new market or launching a new product</div>
+          <div class="package-check-item">Companies that have grown past their original brand but haven't updated it</div>
+          <div class="package-check-item">Startups preparing for a fundraising round who need investor-grade positioning</div>
+          <div class="package-check-item">Established businesses losing ground to competitors who look more credible</div>
+          <div class="package-check-item">Any business where the founder struggles to explain what they do in one sentence</div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="eyebrow mb-16">Timeline</div>
+        <h2 class="d-md mb-24">3–4 weeks<br><em class="em">from deposit to delivery</em></h2>
+        <div style="display:flex;flex-direction:column;">
+          <div style="display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+            <div style="font-family:var(--serif);font-size:13px;color:var(--rose);width:60px;flex-shrink:0;font-weight:500;">Week 1</div>
+            <div style="font-size:13px;color:var(--text-2);">Deep Listen session + competitor research + customer insight gathering</div>
+          </div>
+          <div style="display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+            <div style="font-family:var(--serif);font-size:13px;color:var(--rose);width:60px;flex-shrink:0;font-weight:500;">Week 2</div>
+            <div style="font-size:13px;color:var(--text-2);">Brand Truth + Positioning Architecture drafted and presented</div>
+          </div>
+          <div style="display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+            <div style="font-family:var(--serif);font-size:13px;color:var(--rose);width:60px;flex-shrink:0;font-weight:500;">Week 3</div>
+            <div style="font-size:13px;color:var(--text-2);">Client review, refinement round, Brand Voice Guide completed</div>
+          </div>
+          <div style="display:flex;gap:16px;padding:14px 0;">
+            <div style="font-family:var(--serif);font-size:13px;color:var(--rose);width:60px;flex-shrink:0;font-weight:500;">Week 4</div>
+            <div style="font-size:13px;color:var(--text-2);">Final delivery + handover session + 30-day support begins</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="eyebrow mb-16 reveal">Common questions</div>
+    <h2 class="d-md mb-48 reveal reveal-delay-1">Before you decide</h2>
+    <div class="reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Do I need brand strategy before visual identity design?
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Yes — and strongly. Identity design built without strategy is guesswork. You end up choosing colours because you "like them" and fonts because they look modern, not because they communicate something specific about your brand. Strategy first means every visual decision is justified, not aesthetic preference. The result is a brand that's consistent, distinctive, and built to last.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What if I already have a brand? Can strategy still help?
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Most of our clients have an existing brand that has outgrown its original positioning. Strategy in this context is a repositioning exercise — we're not starting from scratch, we're distilling what the business has become and building the strategic foundation that reflects the real, current version of it. This is often more valuable than starting from zero.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          How involved do I need to be in the process?
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">The Deep Listen session requires 2 hours of your time and genuine engagement — this is where the best insights come from. After that, we need you available for feedback rounds within 5 business days. The total time commitment from your side is roughly 4–6 hours over the engagement. The rest is handled by us.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What happens after delivery?
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">You receive 30 days of post-delivery support — questions, clarifications, guidance on applying the strategy. We also offer to stay on for the visual identity phase, which builds directly on this foundation. Most clients move directly from strategy to identity design because the strategy makes the design process significantly faster and more decisive.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow mb-16">Ready to build on solid ground?</div>
+      <h2 class="d-lg mb-24">Start with a free<br><em class="em">discovery call</em></h2>
+      <p class="body-l mb-32" style="max-width:420px;margin:0 auto 32px;">30 minutes. We'll tell you what we think your brand's biggest strategic gap is — whether you hire us or not.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn-primary" style="padding:16px 36px;font-size:13px;">Book a discovery call ↗</a>
+        <a href="services.html" class="btn-ghost" style="padding:15px 28px;">View all services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">zareya<span>.</span></a>
+        <p class="footer-tagline">African brands, brilliantly told.</p>
+        <form class="newsletter-row" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleNewsletter(event, this)">
+          <input type="hidden" name="form-name" value="newsletter">
+          <input type="hidden" name="bot-field" style="display:none">
+          <input class="newsletter-input" type="email" name="email" placeholder="Subscribe to The Zareya Letter" required>
+          <button class="newsletter-btn" type="submit">Subscribe →</button>
+        </form>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="service-brand-strategy.html">Brand Strategy</a>
+        <a href="service-visual-identity.html">Visual Identity</a>
+        <a href="service-campaigns.html">Campaigns</a>
+        <a href="service-content.html">Content Production</a>
+        <a href="service-website.html">Website & Digital</a>
+        <a href="service-research.html">Market Research</a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="process.html">The Illumination Process</a>
+        <a href="work.html">Work</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Zareya. Westlands, Nairobi.</div>
+      <div class="footer-social">
+        <a href="https://ke.linkedin.com/company/borastudios" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://instagram.com/zareya.media" target="_blank" rel="noopener">Instagram</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="js/nav.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/contact-form.js"></script>
+<script src="js/theme.js"></script>
+<script>
+  function toggleFaq(el) {
+    const answer  = el.nextElementSibling;
+    const chevron = el.querySelector('.faq-chevron');
+    const isOpen  = answer.classList.contains('open');
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-chevron').forEach(c => c.classList.remove('open'));
+    if (!isOpen) { answer.classList.add('open'); chevron.classList.add('open'); }
+  }
+</script>
+</body>
+</html>

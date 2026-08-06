@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — Zareya</title>
+  <meta name="description" content="Selected work from Zareya — brand identities, campaigns, and digital presence built for African businesses.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Work — Zareya">
+  <meta property="og:description" content="Every brand that came to us one thing and left as something else — clearer, sharper, better positioned to win.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zareya.co.ke/work.html">
+  <link rel="stylesheet" href="css/vars.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <style>
+    /* ── WORK GRID ─────────────────────────────────────── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+    }
+    .work-card {
+      background: var(--bg);
+      cursor: pointer;
+      overflow: hidden;
+      transition: none;
+    }
+    .work-card:hover .work-image { transform: scale(1.04); }
+    .work-card:hover .work-overlay { opacity: 1; }
+
+    .work-image {
+      height: 300px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 72px; font-style: italic;
+      overflow: hidden; position: relative;
+      transition: transform 0.5s var(--ease);
+    }
+    .work-overlay {
+      position: absolute; inset: 0;
+      background: rgba(255, 3, 237, 0.06);
+      opacity: 0; transition: opacity 0.28s; z-index: 2;
+    }
+    .work-info { padding: 22px; background: var(--bg); }
+    .work-category {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--rose); margin-bottom: 6px;
+    }
+    .work-title {
+      font-family: var(--serif); font-size: 21px;
+      font-weight: 400; color: var(--text); margin-bottom: 6px;
+    }
+    .work-desc {
+      font-size: 13px; font-weight: 300; color: var(--text-2); line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* ── FILTER ─────────────────────────────────────────── */
+    .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+    .filter-pill {
+      padding: 7px 16px; font-size: 12px; font-weight: 500;
+      color: var(--text-2); border: 1px solid var(--border-2);
+      cursor: pointer; transition: all var(--duration-sm);
+      border-radius: var(--radius); background: transparent;
+    }
+    .filter-pill:hover, .filter-pill.active {
+      border-color: var(--rose); color: var(--rose); background: var(--rose-10);
+    }
+
+    /* ── MODAL OVERLAY ──────────────────────────────────── */
+    #cs-modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: var(--z-modal);
+      display: none; align-items: flex-start; justify-content: center;
+      padding: 40px 24px; overflow-y: auto;
+    }
+    html.dark #cs-modal-overlay { background: rgba(0, 0, 0, 0.88); }
+    #cs-modal-overlay.open { display: flex; }
+
+    #cs-modal {
+      background: var(--bg);
+      border: 1px solid var(--border-2);
+      width: min(760px, 100%);
+      border-radius: var(--radius);
+      animation: modalIn 0.28s var(--ease);
+      height: fit-content;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Modal thumb */
+    .cs-modal-thumb {
+      height: 240px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 80px; font-style: italic;
+      position: relative; overflow: hidden;
+    }
+    .cs-modal-close {
+      position: absolute; top: 16px; right: 20px;
+      font-size: 22px; color: rgba(255,255,255,0.7); cursor: pointer;
+      background: rgba(0,0,0,0.35);
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      transition: color 0.15s; z-index: 1; line-height: 1;
+    }
+    .cs-modal-close:hover { color: #fff; background: rgba(255,3,237,0.4); }
+
+    /* Modal body */
+    .cs-modal-body { padding: 36px; }
+    .cs-modal-cat {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--rose); margin-bottom: 10px;
+    }
+    .cs-modal-title {
+      font-family: var(--serif); font-size: 36px; font-weight: 400;
+      color: var(--text); margin-bottom: 20px; line-height: 1.2;
+    }
+
+    /* Services delivered block */
+    .cs-services-block {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      border-radius: var(--radius);
+    }
+    .cs-services-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text-3); margin-bottom: 12px;
+    }
+    .cs-services-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    /* Modal sections */
+    .cs-modal-section { margin-bottom: 24px; }
+    .cs-modal-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;
+    }
+    .cs-modal-text {
+      font-size: 14px; font-weight: 300; color: var(--text-2); line-height: 1.8;
+    }
+    .cs-modal-result {
+      background: var(--bg-3);
+      border-left: 2px solid var(--rose);
+      padding: 16px 20px;
+      font-size: 15px; font-weight: 400; color: var(--text); line-height: 1.6;
+    }
+    .cs-modal-quote {
+      font-family: var(--serif);
+      font-size: 20px; font-style: italic; color: var(--text); line-height: 1.6;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 24px 0;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1024px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px)  { .work-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">zareya<span>.</span></a>
+  <div class="nav-links">
+    <a href="process.html" class="nav-link">The Process</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="work.html" class="nav-link active">Work</a>
+    <a href="insights.html" class="nav-link">Insights</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-cta">Start a project</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a href="process.html" class="nav-link">The Process</a>
+  <a href="services.html" class="nav-link">Services</a>
+  <a href="work.html" class="nav-link">Work</a>
+  <a href="insights.html" class="nav-link">Insights</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-cta">Start a project</a>
+</div>
+
+
+<!-- ═══ PAGE HEADER ═══ -->
+<div class="page-top">
+  <div class="page-header">
+    <div class="container">
+      <div class="eyebrow mb-24 reveal">Selected work</div>
+      <h1 class="d-xl mb-24 reveal reveal-delay-1">
+        Brands that came to us<br>
+        one thing and left as<br>
+        <em class="em">something else.</em>
+      </h1>
+      <p class="body-l reveal reveal-delay-2" style="max-width: 500px;">
+        Clearer, sharper, and better positioned to win. Every project below
+        represents a real business that invested in getting this right.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ FILTERS ═══ -->
+<section class="section-sm">
+  <div class="container">
+    <div class="filter-row reveal">
+      <button class="filter-pill active" onclick="filterWork('all', this)">All</button>
+      <button class="filter-pill" onclick="filterWork('brand-identity', this)">Brand Identity</button>
+      <button class="filter-pill" onclick="filterWork('campaign', this)">Campaigns</button>
+      <button class="filter-pill" onclick="filterWork('website', this)">Website</button>
+      <button class="filter-pill" onclick="filterWork('strategy', this)">Strategy</button>
+      <button class="filter-pill" onclick="filterWork('content', this)">Content</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ WORK GRID ═══ -->
+<div id="work-container">
+  <div class="work-grid" id="work-grid">
+
+    <!-- Fika Finance -->
+    <div class="work-card reveal" data-cats="brand-identity strategy" onclick="openCase('fika')">
+      <div class="work-image" style="background: linear-gradient(145deg, #1A2436, #2D3E58);">
+        <div class="work-overlay"></div>
+        <span style="color: rgba(100,160,255,0.32);">Fika</span>
+      </div>
+      <div class="work-info">
+        <div class="work-category">Brand Identity · 2025</div>
+        <div class="work-title">Fika Finance</div>
+        <div class="work-desc">Fintech targeting Kenya's young urban professionals — from zero brand to category presence in 6 months.</div>
+        <div class="service-tags-row">
+          <span class="service-tag">Brand Strategy</span>
+          <span class="service-tag">Visual Identity</span>
+          <span class="service-tag">Brand Guidelines</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soko Organic -->
+    <div class="work-card reveal reveal-delay-1" data-cats="campaign content" onclick="openCase('soko')">
+      <div class="work-image" style="background: linear-gradient(145deg, #2A1A0A, #4A3010);">
+        <div class="work-overlay"></div>
+        <span style="color: rgba(255,3,237,0.38);">Soko</span>
+      </div>
+      <div class="work-info">
+        <div class="work-category">Campaign · 2025</div>
+        <div class="work-title">Soko Organic</div>
+        <div class="work-desc">6-month integrated launch campaign — 22,000 new customers in the first 90 days.</div>
+        <div class="service-tags-row">
+          <span class="service-tag">Campaign Creation</span>
+          <span class="service-tag">Content Production</span>
+          <span class="service-tag">Digital Advertising</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mbali Health -->
+    <div class="work-card reveal reveal-delay-2" data-cats="brand-identity strategy website" onclick="openCase('mbali')">
+      <div class="work-image" style="background: linear-gradient(145deg, #0A1A12, #142B1E);">
+        <div class="work-overlay"></div>
+        <span style="color: rgba(34,200,100,0.32);">Mbali</span>
+      </div>
+      <div class="work-info">
+        <div class="work-category">Strategy + Identity · 2024</div>
+        <div class="work-title">Mbali Health</div>
+        <div class="work-desc">Full brand overhaul for East Africa's fastest-growing digital health platform — repositioned for regional expansion.</div>
+        <div class="service-tags-row">
+          <span class="service-tag">Brand Strategy</span>
+          <span class="service-tag">Visual Identity</span>
+          <span class="service-tag">Copywriting</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hema Studios -->
+    <div class="work-card reveal" data-cats="website" onclick="openCase('hema')">
+      <div class="work-image" style="background: linear-gradient(145deg, #1A0A1A, #2D1A2D);">
+        <div class="work-overlay"></div>
+        <span style="color: rgba(180,100,220,0.38);">Hema</span>
+      </div>
+      <div class="work-info">
+        <div class="work-category">Website + Digital · 2024</div>
+        <div class="work-title">Hema Studios</div>
+        <div class="work-desc">Website design and digital presence strategy for Nairobi's leading creative production house.</div>
+        <div class="service-tags-row">
+          <span class="service-tag">Website Design</span>
+          <span class="service-tag">Copywriting</span>
+          <span class="service-tag">SEO</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jua Energy -->
+    <div class="work-card reveal reveal-delay-1" data-cats="brand-identity strategy campaign" onclick="openCase('jua')">
+      <div class="work-image" style="background: linear-gradient(145deg, #1A1208, #332210);">
+        <div class="work-overlay"></div>
+        <span style="color: rgba(220,160,80,0.38);">Jua</span>
+      </div>
+      <div class="work-info">
+        <div class="work-category">Brand Launch · 2024</div>
+        <div class="work-title">Jua Energy</div>
+        <div class="work-desc">Full brand identity and go-to-market strategy for a residential solar provider entering the Kenyan market.</div>
+        <div class="service-tags-row">
+          <span class="service-tag">Brand Strategy</span>
+          <span class="service-tag">Visual Identity</span>
+          <span class="service-tag">Campaign Creation</span>
+          <span class="service-tag">Sales Collateral</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Anga Logistics -->
+    <div class="work-card reveal reveal-delay-2" data-cats="brand-identity content strategy" onclick="openCase('anga')">
+      <div class="work-image" style="background: linear-gradient(145deg, #080A1A, #101830);">
+        <div class="work-overlay"></div>
+        <span style="color: rgba(80,150,220,0.38);">Anga</span>
+      </div>
+      <div class="work-info">
+        <div class="work-category">Brand + Content · 2023</div>
+        <div class="work-title">Anga Logistics</div>
+        <div class="work-desc">Rebrand and 12-month content strategy for a B2B logistics firm expanding across East Africa.</div>
+        <div class="service-tags-row">
+          <span class="service-tag">Visual Identity</span>
+          <span class="service-tag">Brand Strategy</span>
+          <span class="service-tag">Content Production</span>
+          <span class="service-tag">Copywriting</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══ CTA STRIP ═══ -->
+<section class="cta-strip" style="margin-top: 2px;">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="d-md mb-16">Your brand could be next.</h2>
+      <p class="body-l mb-32" style="max-width: 400px; margin-left: auto; margin-right: auto;">
+        We take on a limited number of new clients each quarter.
+        Start the conversation now.
+      </p>
+      <a href="contact.html" class="btn-primary" style="font-size: 13px; padding: 16px 42px;">
+        Start a project ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">zareya<span>.</span></a>
+        <p class="footer-tagline">African brands, brilliantly told. Strategy, identity, and campaigns for ambitious businesses across the continent.</p>
+        <form class="newsletter-row" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleNewsletter(event, this)">
+          <input type="hidden" name="form-name" value="newsletter">
+          <input type="hidden" name="bot-field" style="display:none">
+          <input class="newsletter-input" type="email" name="email" placeholder="Subscribe to The Zareya Letter" required>
+          <button class="newsletter-btn" type="submit">Subscribe →</button>
+        </form>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="process.html">The Illumination Process</a>
+        <a href="services.html">Services</a>
+        <a href="work.html">Work</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="services.html">Brand Strategy</a>
+        <a href="services.html">Visual Identity</a>
+        <a href="services.html">Campaigns</a>
+        <a href="services.html">Content Production</a>
+        <a href="services.html">Website &amp; Digital</a>
+        <a href="services.html">Market Research</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Zareya. Westlands, Nairobi. All rights reserved.</div>
+      <div class="footer-social">
+        <a href="https://ke.linkedin.com/company/borastudios" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://instagram.com/zareya.media" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══ CASE STUDY MODAL ═══ -->
+<div id="cs-modal-overlay" onclick="if(event.target===this)closeCase()">
+  <div id="cs-modal">
+
+    <!-- Thumb + close -->
+    <div class="cs-modal-thumb" id="modal-thumb">
+      <div class="cs-modal-close" onclick="closeCase()">×</div>
+    </div>
+
+    <div class="cs-modal-body">
+      <div class="cs-modal-cat"  id="modal-cat"></div>
+      <div class="cs-modal-title" id="modal-title"></div>
+
+      <!-- Services delivered — the new structured section -->
+      <div class="cs-services-block">
+        <div class="cs-services-label">Services delivered</div>
+        <div class="cs-services-list" id="modal-services"></div>
+      </div>
+
+      <!-- Challenge -->
+      <div class="cs-modal-section">
+        <div class="cs-modal-label">The challenge</div>
+        <div class="cs-modal-text" id="modal-challenge"></div>
+      </div>
+
+      <!-- What we did -->
+      <div class="cs-modal-section">
+        <div class="cs-modal-label">What we did</div>
+        <div class="cs-modal-text" id="modal-work"></div>
+      </div>
+
+      <!-- Result -->
+      <div class="cs-modal-section">
+        <div class="cs-modal-label">The result</div>
+        <div class="cs-modal-result" id="modal-result"></div>
+      </div>
+
+      <!-- Quote -->
+      <div class="cs-modal-quote" id="modal-quote"></div>
+
+      <a href="contact.html" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 8px;">
+        Start a similar project ↗
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+  /* ── CASE STUDY DATA ───────────────────────────────────── */
+  const cases = {
+    fika: {
+      cat: 'Brand Identity · 2025',
+      title: 'Fika Finance, Nairobi',
+      thumb: { bg: 'linear-gradient(145deg, #1A2436, #2D3E58)', label: 'Fika', color: 'rgba(100,160,255,0.32)' },
+      services: ['Brand Strategy', 'Competitive Research', 'Positioning Architecture', 'Logo System', 'Visual Identity', 'Brand Voice Guide', 'Social Templates', 'Brand Guidelines'],
+      challenge: 'Fika had built a genuinely strong fintech product for young Kenyan professionals but looked identical to every other startup in the space. Generic logo, inconsistent messaging, a website that explained features instead of outcomes. They were losing potential users to competitors who appeared more credible.',
+      work: 'Full Illumination engagement — discovery sessions with the founding team and 12 customer interviews. Brand Truth Statement, complete positioning architecture, logo system, colour palette, typography, brand voice guidelines, and social templates. Delivered in 6 weeks.',
+      result: 'From zero brand recognition to category visibility in 6 months. 340% increase in organic sign-ups in the quarter following the rebrand. Featured in TechCabal as one of Kenya\'s most distinctive fintech brands.',
+      quote: '"Zareya didn\'t just redesign our brand — they rebuilt how we think about ourselves. The strategy phase alone changed the direction of our entire company." — Amara Diallo, CEO'
+    },
+    soko: {
+      cat: 'Campaign · 2025',
+      title: 'Soko Organic, Nairobi',
+      thumb: { bg: 'linear-gradient(145deg, #2A1A0A, #4A3010)', label: 'Soko', color: 'rgba(255,3,237,0.38)' },
+      services: ['Campaign Strategy', 'Creative Concept', 'Copywriting', 'Meta Ads Management', 'TikTok Campaigns', 'OOH Activation', 'Content Production', 'Monthly Reporting'],
+      challenge: 'Soko had a great product — certified organic produce sourced directly from Kenyan smallholder farmers — but zero brand presence. They were launching into a market dominated by established supermarket brands with larger budgets.',
+      work: '6-month integrated launch campaign: brand messaging framework, creative concept, Meta and TikTok campaign setup and management, OOH activations in Nairobi, and a content programme positioning Soko as the authentic Kenyan organic choice.',
+      result: '22,000 new customers in the first 90 days. Cost per acquisition 40% below industry benchmark. The TikTok campaign earned 2.1M organic views without paid amplification.',
+      quote: '"In 90 days we went from unknown to everywhere. The campaign they built understood our customer better than we did." — Grace Njoroge, CMO'
+    },
+    mbali: {
+      cat: 'Strategy + Identity · 2024',
+      title: 'Mbali Health, Nairobi',
+      thumb: { bg: 'linear-gradient(145deg, #0A1A12, #142B1E)', label: 'Mbali', color: 'rgba(34,200,100,0.32)' },
+      services: ['Brand Repositioning', 'Market Research', 'Visual Identity Refresh', 'Website Copywriting', 'Investor Pitch Deck Copy', 'Brand Guidelines'],
+      challenge: 'Mbali had grown rapidly to become one of East Africa\'s most-used digital health platforms, but their brand had not grown with them. It looked like a startup, not a company preparing for regional expansion and Series A fundraising.',
+      work: 'Full brand overhaul — repositioning from a Kenyan digital health app to an East African health infrastructure company. New positioning architecture, complete visual identity refresh, investor pitch deck copy, and website redesign.',
+      result: 'Raised Series A at a valuation 60% above their previous round target. Expanded to Uganda and Tanzania within 8 months of the rebrand. Now the benchmark for health brand design in East Africa.',
+      quote: '"Most agencies give you a deck and disappear. Zareya stayed for the launch, stayed for the first campaign, and handed over something that actually worked." — David Kamau, Founder'
+    },
+    hema: {
+      cat: 'Website + Digital · 2024',
+      title: 'Hema Studios, Nairobi',
+      thumb: { bg: 'linear-gradient(145deg, #1A0A1A, #2D1A2D)', label: 'Hema', color: 'rgba(180,100,220,0.38)' },
+      services: ['Website Strategy', 'Information Architecture', 'Copywriting', 'UI Design', 'Website Build', 'Mobile Optimisation', 'SEO Foundation', 'Analytics Setup'],
+      challenge: 'Hema Studios was Nairobi\'s most in-demand production house — but their website looked like it hadn\'t been touched since 2018. They were winning work despite their digital presence, not because of it.',
+      work: 'New website — strategy, copy, design, and build. Information architecture that showcased work first and credentials second. Mobile-first design built for how their clients actually browse.',
+      result: 'Inbound enquiry rate doubled in the first 60 days. Average project value of inbound leads increased by 35% — better brand presentation attracted better clients.',
+      quote: '"Our old website was embarrassing us on pitches. The new one does the opposite." — Hema Studios, Founder'
+    },
+    jua: {
+      cat: 'Brand Launch · 2024',
+      title: 'Jua Energy, Nairobi',
+      thumb: { bg: 'linear-gradient(145deg, #1A1208, #332210)', label: 'Jua', color: 'rgba(220,160,80,0.38)' },
+      services: ['Brand Strategy', 'Product Line Naming', 'Logo System', 'Visual Identity', 'Brand Guidelines', 'Sales Collateral Design', 'Launch Campaign Creative'],
+      challenge: 'Jua was entering a crowded residential solar market where most competitors competed on price. They needed a brand that would let them compete on trust and quality instead.',
+      work: 'Full brand identity from scratch: brand strategy, naming architecture for their product line, logo system, colour palette, brand guidelines, sales collateral, and launch campaign creative.',
+      result: 'Launched into Nairobi\'s premium residential market. 180 installations in the first 6 months — 40% above their target. Zero price negotiation on 78% of closed deals.',
+      quote: '"We priced at a premium from day one because the brand gave us permission to." — Jua Energy, CEO'
+    },
+    anga: {
+      cat: 'Brand + Content · 2023',
+      title: 'Anga Logistics, Nairobi',
+      thumb: { bg: 'linear-gradient(145deg, #080A1A, #101830)', label: 'Anga', color: 'rgba(80,150,220,0.38)' },
+      services: ['Brand Repositioning', 'Visual Identity Refresh', 'Website Copywriting', 'Content Strategy', 'LinkedIn Content Programme', 'Monthly Content Production'],
+      challenge: 'Anga had been operating successfully in Kenya for 4 years but looked and sounded like every other B2B logistics company. Bland, generic, nothing to say. They were expanding into Tanzania and Uganda and needed a brand that could travel.',
+      work: 'Full rebrand — new positioning built around Anga\'s competitive advantage. Visual identity, brand voice, website copy, and a 12-month content strategy targeting supply chain decision-makers on LinkedIn.',
+      result: 'LinkedIn content programme generated 14 inbound enterprise enquiries in the first 6 months. Closed 3 major contracts directly attributed to content — their previous best was 3 inbound enquiries per year.',
+      quote: '"We had no idea content could generate the quality of leads it has. The strategy Zareya built changed how we think about marketing entirely." — Anga Logistics, COO'
+    }
+  };
+
+  /* ── OPEN MODAL ─────────────────────────────────────────── */
+  function openCase(id) {
+    const c = cases[id];
+    if (!c) return;
+
+    /* Thumb */
+    const thumb = document.getElementById('modal-thumb');
+    thumb.style.background = c.thumb.bg;
+    const close = thumb.querySelector('.cs-modal-close');
+    thumb.innerHTML = `<span style="color:${c.thumb.color}; font-size:80px; font-family:var(--serif); font-style:italic; position:relative; z-index:1;">${c.thumb.label}</span>`;
+    thumb.appendChild(close || (() => {
+      const el = document.createElement('div');
+      el.className = 'cs-modal-close';
+      el.textContent = '×';
+      el.onclick = closeCase;
+      return el;
+    })());
+
+    /* Text */
+    document.getElementById('modal-cat').textContent      = c.cat;
+    document.getElementById('modal-title').textContent    = c.title;
+    document.getElementById('modal-challenge').textContent = c.challenge;
+    document.getElementById('modal-work').textContent     = c.work;
+    document.getElementById('modal-result').textContent   = c.result;
+    document.getElementById('modal-quote').textContent    = c.quote;
+
+    /* Services tags */
+    const servicesList = document.getElementById('modal-services');
+    servicesList.innerHTML = c.services.map(s =>
+      `<span class="service-tag">${s}</span>`
+    ).join('');
+
+    /* Open */
+    document.getElementById('cs-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCase() {
+    document.getElementById('cs-modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCase(); });
+
+  /* ── FILTER ─────────────────────────────────────────────── */
+  function filterWork(cat, btn) {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+
+    document.querySelectorAll('.work-card').forEach(card => {
+      const cats = card.dataset.cats || '';
+      card.style.display = (cat === 'all' || cats.includes(cat)) ? 'block' : 'none';
+    });
+
+    /* Recolour grid gaps based on visible cards */
+    const visibleCount = document.querySelectorAll('.work-card[style="display: block;"], .work-card:not([style])').length;
+    document.getElementById('work-grid').style.background = visibleCount > 0 ? 'var(--border)' : 'transparent';
+  }
+
+  /* ── NAV ─────────────────────────────────────────────────── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+  function toggleNav() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('nav-mobile').classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-mobile a').forEach(l => l.addEventListener('click', () => {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('nav-mobile').classList.remove('open');
+  }));
+
+  /* ── REVEAL ─────────────────────────────────────────────── */
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  /* ── TOAST / NEWSLETTER ─────────────────────────────────── */
+  function toast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg; el.classList.add('show');
+    clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2800);
+  }
+  document.querySelectorAll('.newsletter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = btn.closest('.newsletter-row')?.querySelector('.newsletter-input');
+      if (!input?.value.includes('@')) { toast('Please enter a valid email.'); return; }
+      toast('Subscribed! Welcome to The Zareya Letter.');
+      input.value = '';
+    });
+  });
+
+</script>
+
+<script src="js/theme.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,723 @@
+/* ============================================================
+   ZAREYA — Components
+   All reusable UI pieces used across pages
+   ============================================================ */
+
+/* ── WORK CARDS (Portfolio grid) ────────────────────────── */
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+}
+
+.work-card {
+  background: var(--bg);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.work-card:hover .work-image {
+  transform: scale(1.04);
+}
+
+.work-card:hover .work-overlay {
+  opacity: 1;
+}
+
+.work-image {
+  height: 340px;
+  background: var(--bg-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 72px;
+  font-style: italic;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.5s var(--ease);
+}
+
+.work-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(194, 84, 122, 0.06);
+  opacity: 0;
+  transition: opacity var(--duration) var(--ease);
+  z-index: 2;
+}
+
+.work-info {
+  padding: 22px;
+  background: var(--bg);
+}
+
+.work-category {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 6px;
+}
+
+.work-title {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.work-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+/* ── INSIGHT / BLOG CARDS ───────────────────────────────── */
+
+.insight-card {
+  cursor: pointer;
+  transition: all var(--duration-sm);
+  text-decoration: none;
+  display: block;
+}
+
+.insight-card:hover .insight-title {
+  color: var(--rose);
+}
+
+.insight-card:hover .insight-image {
+  transform: translateY(-2px);
+}
+
+.insight-image {
+  height: 210px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 36px;
+  font-style: italic;
+  color: var(--text-3);
+  transition: transform var(--duration) var(--ease);
+  overflow: hidden;
+}
+
+.insight-category {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 7px;
+}
+
+.insight-title {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 9px;
+  transition: color var(--duration-sm);
+}
+
+.insight-excerpt {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+.insight-meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 13px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-3);
+}
+
+/* Featured insight */
+.insight-featured {
+  border: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+}
+.insight-featured:hover .insight-featured-title {
+  color: var(--rose);
+}
+.insight-featured-body {
+  padding: 48px;
+}
+.insight-featured-title {
+  font-family: var(--serif);
+  font-size: var(--size-lg);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  transition: color var(--duration-sm);
+}
+.insight-featured-visual {
+  background: var(--bg-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+.insight-featured-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 30%, var(--rose-10), transparent 60%);
+}
+
+/* ── PROCESS STEPS ──────────────────────────────────────── */
+
+.process-step {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 30px;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.process-step:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.process-step:hover .process-number {
+  color: var(--rose);
+}
+
+.process-number {
+  font-family: var(--serif);
+  font-size: 62px;
+  font-weight: 300;
+  color: var(--text-3);
+  line-height: 1;
+  padding-top: 4px;
+  transition: color var(--duration-sm);
+}
+
+.process-title {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.process-body {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.85;
+  max-width: 640px;
+}
+
+.process-deliverable {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border-2);
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-2);
+  letter-spacing: 0.05em;
+}
+
+/* ── SERVICE CARDS ──────────────────────────────────────── */
+
+.service-card {
+  border-top: 1px solid var(--border-2);
+  padding-top: 28px;
+  cursor: pointer;
+  transition: all var(--duration-sm);
+  text-decoration: none;
+  display: block;
+}
+
+.service-card:hover .service-title {
+  color: var(--rose);
+}
+
+.service-card:hover .service-arrow {
+  transform: translateX(4px);
+}
+
+.service-number {
+  font-family: var(--serif);
+  font-size: 13px;
+  color: var(--text-3);
+  margin-bottom: 13px;
+  transition: color var(--duration-sm);
+}
+
+.service-title {
+  font-family: var(--serif);
+  font-size: 23px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.25;
+  transition: color var(--duration-sm);
+}
+
+.service-body {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+.service-price {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-3);
+  letter-spacing: 0.04em;
+}
+
+.service-arrow {
+  display: inline-block;
+  transition: transform var(--duration-sm) var(--ease);
+  color: var(--rose);
+}
+
+/* ── INDUSTRY PILLS ─────────────────────────────────────── */
+
+.industry-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.industry-pill {
+  border: 1px solid var(--border-2);
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-2);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all var(--duration-sm);
+  border-radius: var(--radius);
+}
+
+.industry-pill:hover {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+
+/* ── PROCESS TEASER LIST (on Home page) ─────────────────── */
+
+.process-list-item {
+  padding: 26px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--duration-sm);
+}
+
+.process-list-item:last-child {
+  border-bottom: none;
+}
+
+.process-list-item:hover .process-list-arrow {
+  transform: translateX(6px);
+}
+
+.process-list-num {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 300;
+  color: var(--text-3);
+  width: 52px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.process-list-content {
+  flex: 1;
+}
+
+.process-list-title {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.process-list-sub {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-2);
+}
+
+.process-list-arrow {
+  color: var(--rose);
+  font-size: 18px;
+  transition: transform var(--duration-sm) var(--ease);
+  flex-shrink: 0;
+}
+
+/* ── CONTACT FORM ───────────────────────────────────────── */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-2);
+  padding: 12px 0;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--duration-sm);
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-bottom-color: var(--rose);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-3);
+}
+
+.form-select option {
+  background: var(--bg-3);
+  color: var(--text);
+}
+
+.form-textarea {
+  resize: none;
+  min-height: 96px;
+}
+
+.form-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* ── VALUES LIST (About page) ───────────────────────────── */
+
+.value-item {
+  padding: 30px 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.value-item:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.value-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-top: 5px;
+}
+
+.value-text {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ── COMPARISON TABLE (Process page) ───────────────────── */
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.compare-table th {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-3);
+}
+
+.compare-table th:last-child {
+  color: var(--rose);
+}
+
+.compare-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-2);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.compare-table td:last-child {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.compare-table tr:last-child td {
+  border-bottom: none;
+}
+
+.compare-table tr:hover td {
+  background: var(--bg-2);
+}
+
+/* ── PACKAGE / PRICING BLOCK ────────────────────────────── */
+
+.package-block {
+  background: var(--bg-2);
+  border: 1px solid var(--border-2);
+  padding: 52px;
+}
+
+.package-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.package-check-item {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.package-check-item::before {
+  content: '✦';
+  color: var(--rose);
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+/* ── TOAST NOTIFICATION ─────────────────────────────────── */
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--bg-2);
+  color: var(--text);
+  border: 1px solid var(--border-2);
+  padding: 13px 22px;
+  font-size: 13px;
+  font-weight: 500;
+  z-index: var(--z-toast);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s var(--ease-spring);
+  pointer-events: none;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius);
+  max-width: 300px;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .insight-featured {
+    grid-template-columns: 1fr;
+  }
+  .insight-featured-visual {
+    min-height: 200px;
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+  .process-step {
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    padding: 32px 0;
+  }
+  .process-number {
+    font-size: 42px;
+  }
+  .value-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .form-2col {
+    grid-template-columns: 1fr;
+  }
+  .package-block {
+    padding: 28px;
+  }
+  .insight-featured-body {
+    padding: 28px;
+  }
+}
+
+
+/* ════════════════════════════════════════════════════════
+   MOBILE FIXES — appended to components.css
+════════════════════════════════════════════════════════ */
+
+/* ── TABLET (≤ 1024px) ──────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  /* Work grid */
+  .work-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Insight featured */
+  .insight-featured { grid-template-columns: 1fr; }
+  .insight-featured-visual { min-height: 200px; order: -1; }
+
+  /* Services grid */
+  .service-cards-grid { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* ── MOBILE (≤ 768px) ───────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Work grid */
+  .work-grid { grid-template-columns: 1fr; }
+  .work-image { height: 240px; }
+
+  /* Process steps */
+  .process-step {
+    grid-template-columns: 48px 1fr;
+    gap: 16px; padding: 28px 0;
+  }
+  .process-number { font-size: 40px; }
+  .process-title { font-size: 24px; }
+  .process-body { font-size: 14px; }
+
+  /* Process list (home page) */
+  .process-list-item { gap: 14px; padding: 20px 0; }
+  .process-list-num { font-size: 28px; width: 40px; }
+  .process-list-title { font-size: 18px; }
+
+  /* Service cards */
+  .service-card { padding-top: 22px; }
+  .service-title { font-size: 20px; }
+
+  /* Values list */
+  .value-item { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+
+  /* Comparison table */
+  .compare-table th,
+  .compare-table td { padding: 10px 14px; font-size: 13px; }
+
+  /* Contact form */
+  .form-2col { grid-template-columns: 1fr; gap: 0; }
+
+  /* Insight cards */
+  .insight-image { height: 180px; }
+  .insight-title { font-size: 18px; }
+
+  /* Package block */
+  .package-block { padding: 28px 20px; }
+
+  /* Hero on index — stack copy and buttons */
+  #hero .container > div > div:last-child {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  #hero .container > div > div:last-child > div:last-child {
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+/* ── SMALL MOBILE (≤ 480px) ─────────────────────────────── */
+@media (max-width: 480px) {
+
+  /* Process step tighter */
+  .process-step { grid-template-columns: 40px 1fr; gap: 12px; }
+  .process-number { font-size: 32px; }
+
+  /* Work card info */
+  .work-info { padding: 16px; }
+  .work-title { font-size: 18px; }
+
+  /* Pricing tiers */
+  .pricing-tiers-grid { grid-template-columns: 1fr !important; }
+
+  /* Insight featured body */
+  .insight-featured-body { padding: 24px 20px; }
+  .insight-featured-title { font-size: clamp(24px, 6vw, 36px); }
+
+  /* Service tags */
+  .service-tags-row { gap: 5px; }
+  .service-tag { font-size: 9px; padding: 3px 8px; }
+
+  /* Next steps on contact */
+  .next-step { gap: 14px; }
+  .next-step-num { font-size: 24px; width: 32px; }
+
+  /* Availability badge text */
+  .availability-badge { padding: 14px; }
+}
